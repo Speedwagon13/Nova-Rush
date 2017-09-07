@@ -4,27 +4,31 @@ using UnityEngine;
 
 public class playerShipScript : MonoBehaviour
 {
-    private CharacterController characterController;
-    
-    private Vector3 movementVector;
-    private Vector3 heading;
-    private int hitPoints;
-
+    [Header("Bullet Prefab")]
     public GameObject projectile;
 
-    public float movementSpeed;
+    [Space(10)]
+    [Header("Movement Variables")]
+    public float movementForce;
+    public float movementDrag;
+    public float aimSpeed;
+    public float aimDeadzone;
     public float bulletSpeed;
     public float fireRate;
     public float damageRate;
+
+    private Rigidbody body;
+    private int hitPoints;
     private float lastShot;
     private float lastDamage;
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        body = GetComponent<Rigidbody>();
         hitPoints = 3;
         lastShot = 0.0f;
         lastDamage = 0.0f;
+
         gameObject.tag = "friendly";
     }
 
@@ -35,17 +39,36 @@ public class playerShipScript : MonoBehaviour
             Destroy(gameObject);
         }
 
-        movementVector.x = Input.GetAxis("LeftJoystickX") * movementSpeed;
-        movementVector.y = 0;
-        movementVector.z = -Input.GetAxis("LeftJoystickZ") * movementSpeed;
-
-
-        GetComponent<Rigidbody>().velocity = movementVector;
-        
-
         if (Input.GetButton("RB"))
         {
             fire();
+        }
+    }
+    
+    private void FixedUpdate()
+    {
+        // Ship movement
+
+        float lx = Input.GetAxis("LeftJoystickX");
+        float lz = -Input.GetAxis("LeftJoystickZ");
+
+        Vector3 move = new Vector3(lx, 0, lz) * movementForce;      // Make a vector out of the movement input, scaled by movementForce
+        move = Vector3.ClampMagnitude(move, movementForce);         // ... but don't let it get larger than movementForce (clamp length)
+
+        body.AddForce(move);                                        // Add the movement force
+        body.velocity *= movementDrag;                              // Slow down the ship with drag
+
+        // Ship aiming
+
+        float rx = Input.GetAxis("RightJoystickX");
+        float rz = -Input.GetAxis("RightJoystickZ");
+
+        Vector3 heading = new Vector3(rx, 0, rz);                   // Make a vector out of the aiming input
+
+        if (heading.magnitude > aimDeadzone)                        // If the user is pushing the right stick hard enough, aim the ship (but smoothly!)
+        {
+            Vector3 smoothHeading = Vector3.Slerp(transform.forward, heading, aimSpeed);
+            transform.forward = smoothHeading;
         }
     }
 
@@ -60,15 +83,6 @@ public class playerShipScript : MonoBehaviour
             }
         }
             
-    }
-
-    private void FixedUpdate()
-    {
-        heading.x = Input.GetAxis("RightJoystickX");
-        heading.y = 0;
-        heading.z = -Input.GetAxis("RightJoystickZ");
-
-        transform.forward = heading;
     }
 
     private void fire()
