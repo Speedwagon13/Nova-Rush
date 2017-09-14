@@ -38,11 +38,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4949797590366822}
   - component: {fileID: 54531978725170170}
-  - component: {fileID: 65566052544868176}
   - component: {fileID: 114170721252006882}
+  - component: {fileID: 135272164177254510}
   m_Layer: 0
   m_Name: bulletEnemy
-  m_TagString: Untagged
+  m_TagString: damageDealerEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,18 +128,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!65 &65566052544868176
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1993556581365594}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114170721252006882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,6 +139,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fa25d2c838934409e5c6d6052a3afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &135272164177254510
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1993556581365594}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135353816107178254
 SphereCollider:
   m_ObjectHideFlags: 1

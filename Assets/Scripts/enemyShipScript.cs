@@ -4,44 +4,63 @@ using UnityEngine;
 
 public class enemyShipScript : MonoBehaviour
 {
-
-    
-    private Vector3 targetLocation;
-    private Vector3 targetLocationUnitV;
-
+    [Header("Bullet and Target Prefabs")]
     public GameObject projectile;
     public GameObject target;
 
-    public float movementSpeed;
-    public float bulletSpeed;
-    public float fireRate;
-    public int hitPoints;
+    private float movementForce;
+    private float movementDrag;
+    private float bulletSpeed;
+    private float fireRate;
+    private float damageRate;
+    private int hitPoints;
 
-    private float lastShot = 0.0f;
+    private Rigidbody body;
+    private Vector3 heading;
+    private float lastShot;
+    private float lastDamage;
 
     void Start()
     {
+        body = GetComponent<Rigidbody>();
+        heading = transform.forward;
+        lastShot = Time.time;
+        lastDamage = Time.time;
+
+        movementForce = 20;
+        movementDrag = .7f;
+        bulletSpeed = 7.5f;
+        fireRate = 0.35f;
+        damageRate = 0.05f;
+        hitPoints = 2;
+
+
         gameObject.tag = "enemy";
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (hitPoints <= 0)
         {
             Destroy(gameObject);
         }
-        targetLocation = target.transform.position - transform.position;
-        targetLocationUnitV = targetLocation / targetLocation.magnitude;
-        GetComponent<Rigidbody>().velocity = targetLocationUnitV * movementSpeed;
-        transform.forward = targetLocationUnitV;
+        heading = (target.transform.position - transform.position) * movementForce;
+        heading = Vector3.ClampMagnitude(heading, movementForce);
+        body.AddForce(heading);
+        body.velocity *= movementDrag;
+        transform.forward = heading;
         fire();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "damageDealerFriendly")
+        if (Time.time > damageRate + lastDamage)
         {
-            hitPoints--;
+            if (other.tag == "damageDealerFriendly")
+            {
+                hitPoints--;
+                lastDamage = Time.time;
+            }
         }
     }
 
@@ -52,7 +71,7 @@ public class enemyShipScript : MonoBehaviour
             Vector3 dir = transform.forward;
             GameObject bullet = Instantiate(projectile, transform.position + transform.forward, Quaternion.identity);
             bullet.tag = "damageDealerEnemy";
-            bullet.GetComponent<Rigidbody>().velocity = targetLocationUnitV * bulletSpeed;
+            bullet.GetComponent<Rigidbody>().velocity = heading.normalized * bulletSpeed;
             lastShot = Time.time;
         }
     }
