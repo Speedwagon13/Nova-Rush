@@ -11,7 +11,6 @@ public class wallNode : MonoBehaviour {
 		if (nextWallNode != null)
         {
             GameObject spawnedWall = Instantiate(wall, (nextWallNode.transform.position - transform.position) / 2, Quaternion.identity);
-            spawnedWall.transform.forward = 
         }
 	}
 }

@@ -56,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4145462131391736}
   m_Layer: 0
-  m_Name: ShipDebris 1
+  m_Name: debris_circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
