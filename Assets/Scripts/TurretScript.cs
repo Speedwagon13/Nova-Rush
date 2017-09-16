@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TurretScript : MonoBehaviour {
+
     [Header("Bullet and Target Prefabs")]
     public GameObject projectile;
     public GameObject target;
@@ -31,17 +32,23 @@ public class TurretScript : MonoBehaviour {
 
     void FixedUpdate()
     {
+        //If hit points are less than 0, kill the ship
         if (hitPoints <= 0)
         {
             Destroy(gameObject);
         }
+
+        //Turn towards the player
         heading = (target.transform.position - transform.position);
         transform.forward = heading;
+
+        //Fires a bomb
         fire();
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        //ship will take a point of damage if hit by player and i-frames have not ended
         if (Time.time > damageRate + lastDamage)
         {
             if (other.tag == "damageDealerFriendly")
@@ -56,7 +63,6 @@ public class TurretScript : MonoBehaviour {
     {
         if (Time.time > fireRate + lastShot)
         {
-            Vector3 dir = transform.forward;
             GameObject bullet = Instantiate(projectile, transform.position + transform.forward, Quaternion.identity);
             bullet.tag = "damageDealerEnemy";
             lastShot = Time.time;

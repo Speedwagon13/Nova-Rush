@@ -17,6 +17,7 @@ public class enemyShipScript : MonoBehaviour
 
     private Rigidbody body;
     private Vector3 heading;
+
     private float lastShot;
     private float lastDamage;
 
@@ -34,7 +35,6 @@ public class enemyShipScript : MonoBehaviour
         damageRate = 0.05f;
         hitPoints = 2;
 
-
         gameObject.tag = "enemy";
     }
 
@@ -46,8 +46,10 @@ public class enemyShipScript : MonoBehaviour
         }
         heading = (target.transform.position - transform.position) * movementForce;
         heading = Vector3.ClampMagnitude(heading, movementForce);
+
         body.AddForce(heading);
         body.velocity *= movementDrag;
+
         transform.forward = heading;
         fire();
     }

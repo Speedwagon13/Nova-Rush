@@ -12,6 +12,7 @@ public class BombScript : MonoBehaviour {
     public float movementDrag;
 
     public GameObject shrapnel;
+
     private float spawnTime;
     private GameObject target;
     private Vector3 heading;
@@ -23,7 +24,6 @@ public class BombScript : MonoBehaviour {
 
         spawnTime = Time.time;
         target = GameObject.FindWithTag("friendly");
-
         heading = target.transform.position - transform.position;
     }
 
@@ -34,13 +34,12 @@ public class BombScript : MonoBehaviour {
             explode();
         }
 
-        //Track the playerShip
+        //Track the playerShip and move toward it
         heading = (target.transform.position - transform.position) * movementForce;
         heading = Vector3.ClampMagnitude(heading, movementForce);
         body.AddForce(heading);
 
         body.velocity *= movementDrag;
-
         transform.forward = heading;
     }
 
