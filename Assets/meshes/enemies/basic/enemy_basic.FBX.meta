@@ -1,0 +1,195 @@
+fileFormatVersion: 2
+guid: 0e406f99ed33acb419b6539aca81d2a8
+timeCreated: 1505681822
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: core
+    100002: //RootNode
+    100004: eye00
+    100006: eye01
+    100008: eye02
+    100010: eye03
+    100012: eye04
+    100014: eye05
+    100016: eye_housing
+    100018: generator00
+    100020: generator01
+    100022: generator02
+    100024: generator03
+    100026: generator04
+    100028: pettle_bottom
+    100030: pettle_top_left
+    100032: pettle_top_right
+    100034: prong_down_left
+    100036: prong_down_right
+    100038: prong_up_left
+    100040: prong_up_right
+    100042: thruster_housing
+    100044: thrusters
+    400000: core
+    400002: //RootNode
+    400004: eye00
+    400006: eye01
+    400008: eye02
+    400010: eye03
+    400012: eye04
+    400014: eye05
+    400016: eye_housing
+    400018: generator00
+    400020: generator01
+    400022: generator02
+    400024: generator03
+    400026: generator04
+    400028: pettle_bottom
+    400030: pettle_top_left
+    400032: pettle_top_right
+    400034: prong_down_left
+    400036: prong_down_right
+    400038: prong_up_left
+    400040: prong_up_right
+    400042: thruster_housing
+    400044: thrusters
+    2300000: core
+    2300002: eye00
+    2300004: eye01
+    2300006: eye02
+    2300008: eye03
+    2300010: eye04
+    2300012: eye05
+    2300014: eye_housing
+    2300016: generator00
+    2300018: generator01
+    2300020: generator02
+    2300022: generator03
+    2300024: generator04
+    2300026: pettle_bottom
+    2300028: pettle_top_left
+    2300030: pettle_top_right
+    2300032: prong_down_left
+    2300034: prong_down_right
+    2300036: prong_up_left
+    2300038: prong_up_right
+    2300040: thruster_housing
+    2300042: thrusters
+    3300000: core
+    3300002: eye00
+    3300004: eye01
+    3300006: eye02
+    3300008: eye03
+    3300010: eye04
+    3300012: eye05
+    3300014: eye_housing
+    3300016: generator00
+    3300018: generator01
+    3300020: generator02
+    3300022: generator03
+    3300024: generator04
+    3300026: pettle_bottom
+    3300028: pettle_top_left
+    3300030: pettle_top_right
+    3300032: prong_down_left
+    3300034: prong_down_right
+    3300036: prong_up_left
+    3300038: prong_up_right
+    3300040: thruster_housing
+    3300042: thrusters
+    4300000: core
+    4300002: generator00
+    4300004: generator01
+    4300006: generator02
+    4300008: generator03
+    4300010: generator04
+    4300012: eye_housing
+    4300014: eye05
+    4300016: eye04
+    4300018: eye03
+    4300020: eye02
+    4300022: eye00
+    4300024: thruster_housing
+    4300026: thrusters
+    4300028: prong_up_right
+    4300030: prong_down_left
+    4300032: prong_up_left
+    4300034: prong_down_right
+    4300036: pettle_top_left
+    4300038: pettle_bottom
+    4300040: pettle_top_right
+    4300042: eye01
+    9500000: //RootNode
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
