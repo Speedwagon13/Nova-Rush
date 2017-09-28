@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 135601721438624720}
   m_Layer: 0
   m_Name: shipPlayer
-  m_TagString: Untagged
+  m_TagString: friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -380,7 +380,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e97ee753e55e8b24294ddadc70fdb756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1768114386625920, guid: c879b699baad62b48a2ca2b7dec5021a, type: 2}
+  abilityCooldown: 1
+  dashLength: 0.000000005
+  dashSpeed: 150
 --- !u!135 &135601721438624720
 SphereCollider:
   m_ObjectHideFlags: 1

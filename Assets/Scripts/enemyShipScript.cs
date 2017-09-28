@@ -70,11 +70,16 @@ public class enemyShipScript : MonoBehaviour
     {
         if (Time.time > fireRate + lastShot)
         {
-            Vector3 dir = transform.forward;
-            GameObject bullet = Instantiate(projectile, transform.position + transform.forward, Quaternion.identity);
-            bullet.tag = "damageDealerEnemy";
-            bullet.GetComponent<Rigidbody>().velocity = heading.normalized * bulletSpeed;
-            lastShot = Time.time;
+            GameObject bullet = EnemyBulletPooler.current.getEnemyBullet();
+
+            if (bullet != null)
+            {
+                bullet.SetActive(true);
+                bullet.transform.position = transform.position;
+                bullet.transform.forward = transform.forward;
+
+                lastShot = Time.time;
+            }
         }
     }
 }

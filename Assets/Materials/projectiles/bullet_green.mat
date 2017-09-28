@@ -85,7 +85,7 @@ Material:
     - _fresneleffect: 1.04
     - _node_6477: 0
     - _node_8952: 5
-    - _offsetval: 0.5
+    - _offsetval: 4
     - _texgloss: 2
     - _textintensity: 1
     - _texval: 1

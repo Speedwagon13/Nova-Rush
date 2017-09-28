@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerShipScript : MonoBehaviour
 {
 
-    [Header("Bullet Prefab")]
-    public GameObject projectile;
+    [Header("Ability Cooldown")]
+    public float abilityCooldown;
+    public float dashLength;
+    public float dashSpeed;
 
     private Rigidbody body;
-
+    
     private float movementForce;
     private float movementDrag;
     private float aimSpeed;
@@ -19,10 +22,12 @@ public class playerShipScript : MonoBehaviour
     private float damageRate;
     private float lastShot;
     private float lastDamage;
+    private float lastAbility;
 
     private int hitPoints;
     
     private bool usingController;
+    private bool dashing;
 
     void Start()
     {
@@ -30,7 +35,9 @@ public class playerShipScript : MonoBehaviour
         hitPoints = 3;
         lastShot = Time.time;
         lastDamage = Time.time;
+        lastAbility = Time.time;
         usingController = false;
+        dashing = false;
 
         //Movement Variables
         movementForce = 180;
@@ -88,11 +95,22 @@ public class playerShipScript : MonoBehaviour
         }
 
         //Ship Movement
-        Vector3 move = new Vector3(moveInputX, 0, moveInputZ) * movementForce;                          // Make a vector out of the movement input, scaled by movementForce
-        move = Vector3.ClampMagnitude(move, movementForce);                                             // ... but don't let it get larger than movementForce (clamp length)
+        if (!dashing)
+        {
+            Vector3 move = new Vector3(moveInputX, 0, moveInputZ) * movementForce;                          // Make a vector out of the movement input, scaled by movementForce
+            move = Vector3.ClampMagnitude(move, movementForce);                                             // ... but don't let it get larger than movementForce (clamp length)
 
-        body.AddForce(move);                                                                            // Add the movement force
-        body.velocity *= movementDrag;                                                                  // Slow down the ship with drag
+            body.AddForce(move);                                                                            // Add the movement force
+            body.velocity *= movementDrag;                                                                  // Slow down the ship with drag
+        } else
+        {
+            Vector3 dashDir = (new Vector3(moveInputX, 0, moveInputZ)).normalized;
+            body.velocity = (dashDir * dashSpeed);
+            if (Time.time > lastAbility + dashLength)
+            {
+                dashing = false;
+            }
+        }
 
         // Ship aiming
         Vector3 heading = new Vector3(aimInputX, 0, aimInputZ);                                         // Make a vector out of the aiming input
@@ -115,10 +133,16 @@ public class playerShipScript : MonoBehaviour
             fire();
         }
 
+        if (Input.GetAxis("Fire2") > 0)
+        {
+            dash();
+            print("dashing");
+        }
+
         //Kills you if your hitpoints fall below 0
         if (hitPoints <= 0)
         {
-            Destroy(gameObject);
+            die();
         }
     }
 
@@ -128,8 +152,11 @@ public class playerShipScript : MonoBehaviour
         {
             if (other.tag == "damageDealerEnemy")
             {
-                hitPoints--;
-                lastDamage = Time.time;
+                if (!dashing)
+                {
+                    hitPoints--;
+                    lastDamage = Time.time;
+                }
             }
         }
     }
@@ -138,11 +165,29 @@ public class playerShipScript : MonoBehaviour
     {
         if (Time.time > fireRate + lastShot)
         {
-            GameObject bullet = Instantiate(projectile, transform.position + transform.forward, Quaternion.identity);
-            bullet.transform.forward = transform.forward;
-            bullet.tag = "damageDealerFriendly";
-            bullet.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
-            lastShot = Time.time;
+            GameObject bullet = PlayerBulletPooler.current.getPlayerBullet();
+
+            if (bullet != null)
+            {
+                bullet.transform.position = transform.position + transform.forward;
+                bullet.transform.rotation = transform.rotation;
+                bullet.SetActive(true);
+                lastShot = Time.time;
+            }
         }
+    }
+
+    private void dash()
+    {
+        if (Time.time > lastAbility + abilityCooldown)
+        {
+            lastAbility = Time.time;
+            dashing = true;
+        }
+    }
+
+    private void die()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

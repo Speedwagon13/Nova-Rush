@@ -15,6 +15,7 @@ public class TurretScript : MonoBehaviour {
     private Vector3 heading;
     private float lastShot;
     private float lastDamage;
+    private GameObject myBomb;
 
     void Start()
     {
@@ -26,13 +27,15 @@ public class TurretScript : MonoBehaviour {
         damageRate = 0.05f;
         hitPoints = 5;
 
+        myBomb = Instantiate(projectile);
+        myBomb.SetActive(false);
 
         gameObject.tag = "enemy";
     }
 
     void FixedUpdate()
     {
-        //If hit points are less than 0, kill the ship
+        //If hit points are less than 0, kill the turret
         if (hitPoints <= 0)
         {
             Destroy(gameObject);
@@ -63,9 +66,13 @@ public class TurretScript : MonoBehaviour {
     {
         if (Time.time > fireRate + lastShot)
         {
-            GameObject bullet = Instantiate(projectile, transform.position + transform.forward, Quaternion.identity);
-            bullet.tag = "damageDealerEnemy";
-            lastShot = Time.time;
+            if (!myBomb.activeInHierarchy)
+            {
+                myBomb.SetActive(true);
+                myBomb.transform.position = transform.position;
+                myBomb.transform.rotation = transform.rotation;
+                lastShot = Time.time;
+            }
         }
     }
 }

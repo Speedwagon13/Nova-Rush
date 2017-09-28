@@ -21,7 +21,10 @@ public class BombScript : MonoBehaviour {
     private void Awake()
     {
         body = GetComponent<Rigidbody>();
+    }
 
+    private void OnEnable()
+    {
         spawnTime = Time.time;
         target = GameObject.FindWithTag("friendly");
         heading = target.transform.position - transform.position;
@@ -48,7 +51,6 @@ public class BombScript : MonoBehaviour {
         if (other.tag == "friendly" || other.tag == "damageDealerFriendly" || other.tag == "neutral")
         {
             explode();
-            Destroy(gameObject);
         }
     }
 
@@ -57,17 +59,24 @@ public class BombScript : MonoBehaviour {
     {
         for (int i = 0; i < bulletCount; i++)
         {
-            GameObject bullet = Instantiate(shrapnel, transform.position - transform.forward, Quaternion.identity);
-            shrapnel.tag = "damageDealerEnemy";
+            GameObject bullet = EnemyBulletPooler.current.getEnemyBullet();
+            if (bullet != null)
+            {
+                bullet.SetActive(true);
 
-            float xComp = Mathf.Cos(2 * Mathf.PI * i / bulletCount);// x comp
-            float zComp = Mathf.Sin(2 * Mathf.PI * i / bulletCount);// z comp
+                float xComp = Mathf.Cos(2 * Mathf.PI * i / bulletCount);// x comp
+                float zComp = Mathf.Sin(2 * Mathf.PI * i / bulletCount);// z comp
 
-            Vector3 shrapnelDir = new Vector3(xComp, 0, zComp);
-            shrapnelDir = shrapnelSpeed * shrapnelDir.normalized;
+                Vector3 shrapnelDir = new Vector3(xComp, 0, zComp);
 
-            bullet.GetComponent<Rigidbody>().velocity = shrapnelDir;
+                bullet.transform.position = transform.position;
+                bullet.transform.forward = shrapnelDir.normalized;
+
+                print("spawned bullet " + i);
+            }
+            
         }
-        Destroy(gameObject);
+        print("Bomb Disabled");
+        gameObject.SetActive(false);
     }
 }
