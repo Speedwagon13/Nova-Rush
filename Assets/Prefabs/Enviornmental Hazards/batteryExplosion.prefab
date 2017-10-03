@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4068136820186344}
   - component: {fileID: 33851121290339514}
   - component: {fileID: 23529972720056992}
+  - component: {fileID: 114402285973486746}
   m_Layer: 0
   m_Name: batteryExplosion
   m_TagString: Untagged
@@ -140,6 +141,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1403833201969336}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114402285973486746
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403833201969336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfc9e63aef4cecd4084e5e37525100d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135246771016579534
 SphereCollider:
   m_ObjectHideFlags: 1

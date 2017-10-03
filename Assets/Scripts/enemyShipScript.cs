@@ -6,7 +6,8 @@ public class enemyShipScript : MonoBehaviour
 {
     [Header("Bullet and Target Prefabs")]
     public GameObject projectile;
-    public GameObject target;
+
+    public float aggroRange;
 
     private float movementForce;
     private float movementDrag;
@@ -14,7 +15,9 @@ public class enemyShipScript : MonoBehaviour
     private float fireRate;
     private float damageRate;
     private int hitPoints;
+    private bool hasSeenPlayer;
 
+    private GameObject target;
     private Rigidbody body;
     private Vector3 heading;
 
@@ -24,6 +27,7 @@ public class enemyShipScript : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody>();
+        hasSeenPlayer = false;
         heading = transform.forward;
         lastShot = Time.time;
         lastDamage = Time.time;
@@ -35,23 +39,38 @@ public class enemyShipScript : MonoBehaviour
         damageRate = 0.05f;
         hitPoints = 2;
 
+        target = GameObject.FindWithTag("friendly");
+
         gameObject.tag = "enemy";
     }
 
     void FixedUpdate()
     {
+        // Triggers the enemy when the player is in range
+        if (target != null)
+        {
+            if (!hasSeenPlayer && Vector3.Magnitude(target.transform.position - transform.position) < aggroRange)
+            {
+                hasSeenPlayer = true;
+            }
+        }
+
         if (hitPoints <= 0)
         {
             Destroy(gameObject);
         }
-        heading = (target.transform.position - transform.position) * movementForce;
-        heading = Vector3.ClampMagnitude(heading, movementForce);
 
-        body.AddForce(heading);
-        body.velocity *= movementDrag;
+        if (target != null && hasSeenPlayer)
+        {
+            heading = (target.transform.position - transform.position) * movementForce;
+            heading = Vector3.ClampMagnitude(heading, movementForce);
 
-        transform.forward = heading;
-        fire();
+            body.AddForce(heading);
+            body.velocity *= movementDrag;
+
+            transform.forward = heading;
+            fire();
+        } 
     }
 
     private void OnTriggerEnter(Collider other)

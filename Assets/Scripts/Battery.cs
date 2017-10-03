@@ -6,23 +6,25 @@ public class Battery : MonoBehaviour {
 
     private float damageRate;
     private int hitPoints;
-    private float lastHit;
+    private float lastDamage;
     public GameObject explosion;
 
 	// Use this for initialization
 	void Start () {
         hitPoints = 5;
-        damageRate = Time.time;
-        lastHit = Time.time;
+        damageRate = 1f;
+        lastDamage = Time.time;
 	}
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "friendlyDamageDealer" || other.tag == "enemyDamageDealer")
+        print("hit");
+        if (other.tag == "damageDealerFriendly")
         {
-            if (Time.time > lastHit + damageRate)
+            if (Time.time > lastDamage + damageRate)
                 {
                 hitPoints--;
+                print("damage taken");
                 }
         }
     }
@@ -32,6 +34,7 @@ public class Battery : MonoBehaviour {
         if (hitPoints <= 0)
         {
             explode();
+            Destroy(gameObject);
         }
     }
 

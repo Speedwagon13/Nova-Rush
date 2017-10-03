@@ -10,6 +10,7 @@ public class playerShipScript : MonoBehaviour
     public float abilityCooldown;
     public float dashLength;
     public float dashSpeed;
+    public GameObject gameOverScreen;
 
     private Rigidbody body;
     
@@ -97,8 +98,7 @@ public class playerShipScript : MonoBehaviour
         //Ship Movement
         if (!dashing)
         {
-            Vector3 move = new Vector3(moveInputX, 0, moveInputZ) * movementForce;                          // Make a vector out of the movement input, scaled by movementForce
-            move = Vector3.ClampMagnitude(move, movementForce);                                             // ... but don't let it get larger than movementForce (clamp length)
+            Vector3 move = (new Vector3(moveInputX, 0, moveInputZ)).normalized * movementForce;
 
             body.AddForce(move);                                                                            // Add the movement force
             body.velocity *= movementDrag;                                                                  // Slow down the ship with drag
@@ -188,6 +188,7 @@ public class playerShipScript : MonoBehaviour
 
     private void die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        gameOverScreen.SetActive(true);
+        Destroy(gameObject);
     }
 }

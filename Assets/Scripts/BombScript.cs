@@ -71,12 +71,9 @@ public class BombScript : MonoBehaviour {
 
                 bullet.transform.position = transform.position;
                 bullet.transform.forward = shrapnelDir.normalized;
-
-                print("spawned bullet " + i);
             }
             
         }
-        print("Bomb Disabled");
         gameObject.SetActive(false);
     }
 }
