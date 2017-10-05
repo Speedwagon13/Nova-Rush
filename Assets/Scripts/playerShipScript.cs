@@ -11,6 +11,8 @@ public class playerShipScript : MonoBehaviour
     public float dashLength;
     public float dashSpeed;
     public GameObject gameOverScreen;
+    public GameObject pauseScreen;
+    public GameObject winScreen;
 
     private Rigidbody body;
     
@@ -29,6 +31,7 @@ public class playerShipScript : MonoBehaviour
     
     private bool usingController;
     private bool dashing;
+    private bool paused;
 
     void Start()
     {
@@ -39,6 +42,7 @@ public class playerShipScript : MonoBehaviour
         lastAbility = Time.time;
         usingController = false;
         dashing = false;
+        paused = false;
 
         //Movement Variables
         movementForce = 180;
@@ -54,96 +58,100 @@ public class playerShipScript : MonoBehaviour
     
     private void FixedUpdate()
     {
-        //Booleans for any mouse movement and any keys pressed
-        bool mosMoved = Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0;
-        bool w = Input.GetKey("w");
-        bool a = Input.GetKey("a");
-        bool s = Input.GetKey("s");
-        bool d = Input.GetKey("d");
+        
+            //Booleans for any mouse movement and any keys pressed
+            bool mosMoved = Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0;
+            bool w = Input.GetKey("w");
+            bool a = Input.GetKey("a");
+            bool s = Input.GetKey("s");
+            bool d = Input.GetKey("d");
 
-        //Input Variables
-        float moveInputX = 0f;
-        float moveInputZ = 0f;
-        float aimInputX = 0f;
-        float aimInputZ = 0f;
+            //Input Variables
+            float moveInputX = 0f;
+            float moveInputZ = 0f;
+            float aimInputX = 0f;
+            float aimInputZ = 0f;
 
-        //Sets usingController to true or false depending your input
-        if (w || a || s || d || mosMoved)
-        {
-            usingController = false;
-        }
-        else
-        {
-            usingController = true;
-        }
-
-        // Input with controller
-        if (usingController)
-        {
-            moveInputX = Input.GetAxis("LeftJoystickX");
-            moveInputZ = -Input.GetAxis("LeftJoystickZ");
-            aimInputX = Input.GetAxis("RightJoystickX");
-            aimInputZ = -Input.GetAxis("RightJoystickZ");
-        } 
-
-        //Input with Mouse and Keyboard
-        if (!usingController)
-        {
-            moveInputX = Input.GetAxis("Horizontal");
-            moveInputZ = Input.GetAxis("Vertical");
-            aimInputX = Input.mousePosition.x - (Screen.width / 2);
-            aimInputZ = Input.mousePosition.y - (Screen.height / 2);
-        }
-
-        //Ship Movement
-        if (!dashing)
-        {
-            Vector3 move = (new Vector3(moveInputX, 0, moveInputZ)).normalized * movementForce;
-
-            body.AddForce(move);                                                                            // Add the movement force
-            body.velocity *= movementDrag;                                                                  // Slow down the ship with drag
-        } else
-        {
-            Vector3 dashDir = (new Vector3(moveInputX, 0, moveInputZ)).normalized;
-            body.velocity = (dashDir * dashSpeed);
-            if (Time.time > lastAbility + dashLength)
+            //Sets usingController to true or false depending your input
+            if (w || a || s || d || mosMoved)
             {
-                dashing = false;
+                usingController = false;
             }
-        }
+            else
+            {
+                usingController = true;
+            }
 
-        // Ship aiming
-        Vector3 heading = new Vector3(aimInputX, 0, aimInputZ);                                         // Make a vector out of the aiming input
-        Vector3 optionalHeading = new Vector3(moveInputX, 0, moveInputZ);                               // Make optional heading out of the movement input
-        Vector3 smoothHeading = Vector3.Slerp(transform.forward, heading, aimSpeed);
-        Vector3 smoothOptionalHeading = Vector3.Slerp(transform.forward, optionalHeading, aimSpeed);
+            // Input with controller
+            if (usingController)
+            {
+                moveInputX = Input.GetAxis("LeftJoystickX");
+                moveInputZ = -Input.GetAxis("LeftJoystickZ");
+                aimInputX = Input.GetAxis("RightJoystickX");
+                aimInputZ = -Input.GetAxis("RightJoystickZ");
+            }
 
-        if (heading.magnitude > aimDeadzone)                                                            
-        { 
-            transform.forward = smoothHeading;                                                          // If the user is pushing the right stick hard enough, aim the ship (but smoothly!)
-        }
-        else
-        {
-            transform.forward = smoothOptionalHeading;                                                  //This way the ship isnt perpetually strafing
-        }
+            //Input with Mouse and Keyboard
+            if (!usingController)
+            {
+                moveInputX = Input.GetAxis("Horizontal");
+                moveInputZ = Input.GetAxis("Vertical");
+                aimInputX = Input.mousePosition.x - (Screen.width / 2);
+                aimInputZ = Input.mousePosition.y - (Screen.height / 2);
+            }
 
-        //Fires a bullet if you press fire
-        if (Input.GetButton("RB") || Input.GetAxis("Fire1") > 0)
-        {
-            fire();
-        }
 
-        if (Input.GetAxis("Fire2") > 0)
-        {
-            dash();
-            print("dashing");
-        }
+            //Ship Movement
+            if (!dashing)
+            {
+                Vector3 move = (new Vector3(moveInputX, 0, moveInputZ)) * movementForce;
 
-        //Kills you if your hitpoints fall below 0
-        if (hitPoints <= 0)
-        {
-            die();
-        }
+                body.AddForce(move);                                                                            // Add the movement force
+                body.velocity *= movementDrag;                                                                  // Slow down the ship with drag
+            }
+            else
+            {
+                Vector3 dashDir = (new Vector3(moveInputX, 0, moveInputZ)).normalized;
+                body.velocity = (dashDir * dashSpeed);
+                if (Time.time > lastAbility + dashLength)
+                {
+                    dashing = false;
+                }
+            }
+
+            // Ship aiming
+            Vector3 heading = new Vector3(aimInputX, 0, aimInputZ);                                         // Make a vector out of the aiming input
+            Vector3 optionalHeading = new Vector3(moveInputX, 0, moveInputZ);                               // Make optional heading out of the movement input
+            Vector3 smoothHeading = Vector3.Slerp(transform.forward, heading, aimSpeed);
+            Vector3 smoothOptionalHeading = Vector3.Slerp(transform.forward, optionalHeading, aimSpeed);
+
+            if (heading.magnitude > aimDeadzone)
+            {
+                transform.forward = smoothHeading;                                                          // If the user is pushing the right stick hard enough, aim the ship (but smoothly!)
+            }
+            else
+            {
+                transform.forward = smoothOptionalHeading;                                                  //This way the ship isnt perpetually strafing
+            }
+
+            //Fires a bullet if you press fire
+            if (Input.GetButton("RB") || Input.GetAxis("Fire1") > 0)
+            {
+                fire();
+            }
+
+            if (Input.GetAxis("Fire2") > 0)
+            {
+                dash();
+                print("dashing");
+            }
+
+            //Kills you if your hitpoints fall below 0
+            if (hitPoints <= 0)
+            {
+                die();
+            }
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -189,6 +197,19 @@ public class playerShipScript : MonoBehaviour
     private void die()
     {
         gameOverScreen.SetActive(true);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+    }
+
+    private void pause()
+    {
+        if (paused)
+        {
+            pauseScreen.SetActive(false);
+            paused = false;
+        } else
+        {
+            pauseScreen.SetActive(true);
+            paused = true;
+        }
     }
 }
