@@ -8,10 +8,12 @@ public class bullet : MonoBehaviour
     public float bulletSpeed;
     public float lifeSpan;
     private Rigidbody body;
+    private GameObject player;
 
     private void Start()
     {
         body = gameObject.GetComponent<Rigidbody>();
+        player = GameObject.FindWithTag("friendly");
     }
 
     private void OnEnable()
@@ -21,10 +23,19 @@ public class bullet : MonoBehaviour
 
     private void Update()
     {
-        body.velocity = transform.forward * bulletSpeed;
-        if (Time.time > spawnTime + lifeSpan)
+        if (player != null)
         {
-            gameObject.SetActive(false);
+            if (player.activeInHierarchy)
+            {
+                body.velocity = transform.forward * bulletSpeed;
+                if (Time.time > spawnTime + lifeSpan)
+                {
+                    gameObject.SetActive(false);
+                }
+            } else
+            {
+                body.velocity = new Vector3(0, 0, 0);
+            }
         }
     }
 

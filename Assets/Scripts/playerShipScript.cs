@@ -31,7 +31,6 @@ public class playerShipScript : MonoBehaviour
     
     private bool usingController;
     private bool dashing;
-    private bool paused;
 
     void Start()
     {
@@ -42,7 +41,6 @@ public class playerShipScript : MonoBehaviour
         lastAbility = Time.time;
         usingController = false;
         dashing = false;
-        paused = false;
 
         //Movement Variables
         movementForce = 180;
@@ -58,7 +56,6 @@ public class playerShipScript : MonoBehaviour
     
     private void FixedUpdate()
     {
-        
             //Booleans for any mouse movement and any keys pressed
             bool mosMoved = Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0;
             bool w = Input.GetKey("w");
@@ -151,7 +148,17 @@ public class playerShipScript : MonoBehaviour
             {
                 die();
             }
-        
+
+
+        if (GameObject.FindWithTag("enemy") == null)
+        {
+            win();
+        }
+
+        if (Input.GetKeyDown("escape"))
+        {
+            pause();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -202,14 +209,13 @@ public class playerShipScript : MonoBehaviour
 
     private void pause()
     {
-        if (paused)
-        {
-            pauseScreen.SetActive(false);
-            paused = false;
-        } else
-        {
-            pauseScreen.SetActive(true);
-            paused = true;
-        }
+        pauseScreen.SetActive(true);
+        gameObject.SetActive(false);
+    }
+
+    private void win()
+    {
+        winScreen.SetActive(true);
+        gameObject.SetActive(false);
     }
 }
