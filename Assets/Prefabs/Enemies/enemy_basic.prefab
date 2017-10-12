@@ -1639,4 +1639,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 1213029282945268, guid: c7dbba2e246929a4ebb8627630bba4b2, type: 2}
-  target: {fileID: 0}
+  aggroRange: 10

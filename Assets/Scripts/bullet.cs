@@ -12,8 +12,8 @@ public class bullet : MonoBehaviour
 
     private void Start()
     {
-        body = gameObject.GetComponent<Rigidbody>();
         player = GameObject.FindWithTag("friendly");
+        body = gameObject.GetComponent<Rigidbody>();
     }
 
     private void OnEnable()
@@ -41,12 +41,12 @@ public class bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.tag == "damageDealerFriendly" && other.tag != "damageDealerFriendly" && other.tag != "friendly")
+        if (gameObject.tag == "damageDealerFriendly" && other.tag == "enemy")
         {
             body.velocity = new Vector3(0, 0, 0);
             gameObject.SetActive(false);
         }
-        if (gameObject.tag == "damageDealerEnemy" && other.tag != "damageDealerEnemy" && other.tag != "enemy")
+        if ((gameObject.tag == "damageDealerEnemy" && other.tag == "friendly") || other.tag == "neutral")
         {
             body.velocity = new Vector3(0, 0, 0);
             gameObject.SetActive(false);
