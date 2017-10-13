@@ -2193,7 +2193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityCooldown: 1
   dashLength: 0.000000005
-  dashSpeed: 150
+  dashSpeed: 100
   gameOverScreen: {fileID: 1921962940784272}
   pauseScreen: {fileID: 1613962598544412}
   winScreen: {fileID: 1036863096728348}

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 54653620697758056}
   m_Layer: 0
   m_Name: shipEnemy
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,4 +169,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 1993556581365594, guid: 912e8ef05565c92498a2479149c3e3e8, type: 2}
-  target: {fileID: 0}
+  aggroRange: 0

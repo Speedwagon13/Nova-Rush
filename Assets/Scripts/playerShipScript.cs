@@ -137,7 +137,7 @@ public class playerShipScript : MonoBehaviour
                 fire();
             }
 
-            if (Input.GetAxis("Fire2") > 0)
+            if (Input.GetButton("LB") || Input.GetAxis("Fire2") > 0)
             {
                 dash();
                 print("dashing");
@@ -149,9 +149,9 @@ public class playerShipScript : MonoBehaviour
                 die();
             }
 
-
         if (GameObject.FindWithTag("enemy") == null)
         {
+            print("you won 1");
             win();
         }
 
@@ -184,7 +184,7 @@ public class playerShipScript : MonoBehaviour
 
             if (bullet != null)
             {
-                bullet.transform.position = transform.position + transform.forward;
+                bullet.transform.position = transform.position + transform.forward * 2;
                 bullet.transform.rotation = transform.rotation;
                 bullet.SetActive(true);
                 lastShot = Time.time;
@@ -215,6 +215,7 @@ public class playerShipScript : MonoBehaviour
 
     private void win()
     {
+        print("you won 2");
         winScreen.SetActive(true);
         gameObject.SetActive(false);
     }

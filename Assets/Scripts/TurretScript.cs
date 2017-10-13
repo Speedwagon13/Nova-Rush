@@ -6,7 +6,8 @@ public class TurretScript : MonoBehaviour {
 
     [Header("Bullet and Target Prefabs")]
     public GameObject projectile;
-    public GameObject target;
+
+    private GameObject target;
 
     private float fireRate;
     private float damageRate;
@@ -22,6 +23,8 @@ public class TurretScript : MonoBehaviour {
         heading = transform.forward;
         lastShot = Time.time;
         lastDamage = Time.time;
+
+        target = GameObject.FindWithTag("friendly");
 
         fireRate = 2.5f;
         damageRate = 0.05f;
