@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: bullet_green
-  m_Shader: {fileID: 4800000, guid: 85312380a983c5f4897a0f50f6e50803, type: 3}
+  m_Shader: {fileID: 4800000, guid: 29eaf419f9bd443c6a302b2fa38b568c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -83,6 +83,7 @@ Material:
     - _VSpeed: 0.5
     - _ZWrite: 1
     - _fresneleffect: 1.04
+    - _node_2615: 10
     - _node_6477: 0
     - _node_8952: 5
     - _offsetval: 4
@@ -92,7 +93,11 @@ Material:
     m_Colors:
     - _Color: {r: 0.05490196, g: 0.9490196, b: 0.6156863, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ShadowColor: {r: 1, g: 0, b: 0, a: 1}
+    - _diffuse: {r: 1, g: 0.915733, b: 0.7205882, a: 1}
     - _fresnelcolor: {r: 0, g: 1, b: 0.33793092, a: 1}
+    - _node_4919: {r: 0.8823529, g: 0.1297578, b: 0.1297578, a: 1}
+    - _node_5312: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _node_8489: {r: 0.1528979, g: 0.2545788, b: 0.7426471, a: 1}
     - _node_9730: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _texcol: {r: 0.9705882, g: 0.8808137, b: 0.1570069, a: 1}

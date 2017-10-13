@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: rock_grey
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 29eaf419f9bd443c6a302b2fa38b568c, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -72,7 +72,11 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
+    - _node_2615: 10
     m_Colors:
     - _Color: {r: 0.5, g: 0.4595588, b: 0.4654158, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
+    - _ShadowColor: {r: 0.5647059, g: 0.43529412, b: 0.29411766, a: 1}
+    - _diffuse: {r: 1, g: 0.79918873, b: 0.27205884, a: 1}
+    - _node_5312: {r: 0.5, g: 0.5, b: 0.5, a: 1}
