@@ -17,7 +17,7 @@ public class PlayerBulletPooler : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        poolSize = 40;
+        poolSize = 15;
         playerBulletPool = new List<GameObject>(poolSize);
 		for (int i = 0; i < poolSize; i++)
         {

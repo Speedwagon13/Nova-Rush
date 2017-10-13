@@ -62,14 +62,18 @@ public class enemyShipScript : MonoBehaviour
 
         if (target != null && hasSeenPlayer)
         {
-            heading = (target.transform.position - transform.position) * movementForce;
-            heading = Vector3.ClampMagnitude(heading, movementForce);
+            if (target.activeInHierarchy)
+            {
+                heading = (target.transform.position - transform.position) * movementForce;
+                heading = Vector3.ClampMagnitude(heading, movementForce);
 
-            body.AddForce(heading);
-            body.velocity *= movementDrag;
+                body.AddForce(heading);
+                body.velocity *= movementDrag;
 
-            transform.forward = heading;
-            fire();
+                transform.forward = heading;
+                fire();
+            }
+            
         } 
     }
 

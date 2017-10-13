@@ -9,4 +9,9 @@ public class LoadOnClick : MonoBehaviour {
     {
         SceneManager.LoadScene(level);
     }
+
+    public void LoadNextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }
