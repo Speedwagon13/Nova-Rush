@@ -36,8 +36,8 @@ public class enemyShipScript : MonoBehaviour
         movementDrag = .7f;
         bulletSpeed = 7.5f;
         fireRate = 0.35f;
-        damageRate = 0.05f;
-        hitPoints = 2;
+        damageRate = 0.1f;
+        hitPoints = 5;
 
         target = GameObject.FindWithTag("friendly");
 

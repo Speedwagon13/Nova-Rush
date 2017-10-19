@@ -4,32 +4,10 @@ using UnityEngine;
 
 public class shield : MonoBehaviour {
 
-    public int bouncePower;
-
-    public void OnTriggerEnter(Collider other)
+    public void OnCollisionEnter(Collision col)
     {
-        GameObject wallBody = gameObject;
-        Rigidbody body = other.GetComponent<Rigidbody>();
-
-        if (other.tag == "damageDealerFriendly" || other.tag == "damageDealerEnemy")
-        {
-            if (body.position.x > wallBody.transform.position.x)
-            {
-                body.AddForce(new Vector3(1, 0, 0) * bouncePower);
-            }
-            if (body.position.x < wallBody.transform.position.x)
-            {
-                body.AddForce(new Vector3(-1, 0, 0) * bouncePower);
-            }
-            if (body.position.z > wallBody.transform.position.z)
-            {
-                body.AddForce(new Vector3(0, 0, 1) * bouncePower);
-            }
-            if (body.position.z < wallBody.transform.position.z)
-            {
-                body.AddForce(new Vector3(0, 0, -1) * bouncePower);
-            }
-        }
-
+        GameObject bul = col.collider.gameObject;
+        bul.transform.position = 3 * (bul.transform.forward + col.contacts[0].normal);
+        bul.transform.forward = bul.transform.forward + col.contacts[0].normal;
     }
 }

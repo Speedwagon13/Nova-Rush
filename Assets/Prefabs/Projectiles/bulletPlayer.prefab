@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23861280549107726}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: damageDealerFriendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

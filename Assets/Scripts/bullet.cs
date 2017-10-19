@@ -32,10 +32,7 @@ public class bullet : MonoBehaviour
                 {
                     gameObject.SetActive(false);
                 }
-            } else
-            {
-                body.velocity = new Vector3(0, 0, 0);
-            }
+            } 
         }
     }
 
@@ -45,8 +42,7 @@ public class bullet : MonoBehaviour
         {
             body.velocity = new Vector3(0, 0, 0);
             gameObject.SetActive(false);
-        }
-        if ((gameObject.tag == "damageDealerEnemy" && other.tag == "friendly") || other.tag == "neutral")
+        } else if ((gameObject.tag == "damageDealerEnemy" && other.tag == "friendly") || other.tag == "neutral")
         {
             body.velocity = new Vector3(0, 0, 0);
             gameObject.SetActive(false);

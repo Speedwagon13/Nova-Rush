@@ -9,16 +9,26 @@ ModelImporter:
     100002: Empty
     100004: //RootNode
     100006: Cylinder
+    100008: Cylinder_001
+    100010: Cylinder_002
     400000: Cube
     400002: Empty
     400004: //RootNode
     400006: Cylinder
+    400008: Cylinder_001
+    400010: Cylinder_002
     2300000: Cube
     2300002: Cylinder
+    2300004: Cylinder_001
+    2300006: Cylinder_002
     3300000: Cube
     3300002: Cylinder
+    3300004: Cylinder_001
+    3300006: Cylinder_002
     4300000: Cube
     4300002: Cylinder
+    4300004: Cylinder_002
+    4300006: Cylinder_001
     7400000: Default Take
     9500000: //RootNode
   materials:
