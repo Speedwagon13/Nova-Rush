@@ -47,7 +47,7 @@ public class playerShipScript : MonoBehaviour
         movementDrag = .7f;
         aimSpeed = .5f;
         aimDeadzone = .1f;
-        bulletSpeed = 20;
+        bulletSpeed = 30;
         fireRate = .125f;
         damageRate = 1.5f;
 
