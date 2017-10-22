@@ -13,6 +13,7 @@ public class enemyShipScript : MonoBehaviour
     private float movementDrag;
     private float bulletSpeed;
     private float fireRate;
+    private float aimSpeed;
     private float damageRate;
     private int hitPoints;
     private bool hasSeenPlayer;
@@ -37,6 +38,7 @@ public class enemyShipScript : MonoBehaviour
         bulletSpeed = 7.5f;
         fireRate = 0.35f;
         damageRate = 0.1f;
+        aimSpeed = .5f;
         hitPoints = 5;
 
         target = GameObject.FindWithTag("friendly");
@@ -57,6 +59,15 @@ public class enemyShipScript : MonoBehaviour
 
         if (hitPoints <= 0)
         {
+
+            GameObject explosion = ExplosionPool.current.getExplosion();
+
+            if (explosion != null)
+            {
+                explosion.transform.position = transform.position;
+                explosion.SetActive(true);
+            }
+
             Destroy(gameObject);
         }
 
@@ -64,13 +75,14 @@ public class enemyShipScript : MonoBehaviour
         {
             if (target.activeInHierarchy)
             {
+                // make it turn more slowly
                 heading = (target.transform.position - transform.position) * movementForce;
                 heading = Vector3.ClampMagnitude(heading, movementForce);
 
                 body.AddForce(heading);
                 body.velocity *= movementDrag;
 
-                transform.forward = heading;
+                transform.forward = Vector3.Slerp(transform.forward, heading, aimSpeed);
                 fire();
             }
             

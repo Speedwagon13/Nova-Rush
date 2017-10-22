@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 237e9c03b536b18489bab9449f5ae557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 1264784284858650, guid: f9c56baae6bf67b44aaa0c80de1824ef, type: 2}
   bulletSpeed: 10
   lifeSpan: 5
 --- !u!135 &135272164177254510

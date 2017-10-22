@@ -74,6 +74,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33558170467769964
 MeshFilter:
@@ -117,11 +118,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1846825675661194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0206a8d6eb224f3fb125e9e037c1c84, type: 3}
+  m_Script: {fileID: 11500000, guid: c34ebf49287bc48d0aeabe96a68e57b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
-  aggroRange: 15.19
-  spread: 1
-  enemyBullet: {fileID: 1993556581365594, guid: 912e8ef05565c92498a2479149c3e3e8,
-    type: 2}
+  aggroRange: 20
+  fireRate: 10
+  spread: 45

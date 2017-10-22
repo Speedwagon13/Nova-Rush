@@ -11,6 +11,8 @@ public class ShieldShipScript : MonoBehaviour
     public float speed;
     public float damageRate;
 
+    public GameObject explosion;
+
     private float spawnTime;
     private bool hasSeenPlayer;
     private float lastShot;

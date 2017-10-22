@@ -23,27 +23,69 @@ public class bullet : MonoBehaviour
 
     private void Update()
     {
+        // moves 
         if (player != null)
         {
             if (player.activeInHierarchy)
             {
                 body.velocity = transform.forward * bulletSpeed;
-                if (Time.time > spawnTime + lifeSpan)
-                {
-                    gameObject.SetActive(false);
-                }
             } 
+        }
+
+        if (Time.time > spawnTime + lifeSpan)
+        {
+            gameObject.SetActive(false);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if (gameObject.tag == "damageDealerFriendly" && other.tag == "enemy")
         {
+            GameObject explosion = EnemyExplosionPool.current.getExplosion();
+            if (explosion != null)
+            {
+                explosion.transform.position = transform.position;
+                explosion.SetActive(true);
+            }
+
             body.velocity = new Vector3(0, 0, 0);
             gameObject.SetActive(false);
-        } else if ((gameObject.tag == "damageDealerEnemy" && other.tag == "friendly") || other.tag == "neutral")
+
+        } else if (gameObject.tag == "damageDealerEnemy" && other.tag == "friendly")
         {
+            GameObject explosion = PlayerExplosionPool.current.getExplosion();
+            if (explosion != null)
+            {
+                explosion.transform.position = transform.position;
+                explosion.SetActive(true);
+            }
+
+            body.velocity = new Vector3(0, 0, 0);
+            gameObject.SetActive(false);
+
+        } else if (gameObject.tag == "damageDealerFriendly" && other.tag == "neutral")
+        {
+            GameObject explosion = EnemyExplosionPool.current.getExplosion();
+            if (explosion != null)
+            {
+                explosion.transform.position = transform.position;
+                explosion.SetActive(true);
+            }
+
+            body.velocity = new Vector3(0, 0, 0);
+            gameObject.SetActive(false);
+
+        } else if (gameObject.tag == "damageDealerEnemy" && other.tag == "neutral")
+        {
+            GameObject explosion = PlayerExplosionPool.current.getExplosion();
+            if (explosion != null)
+            {
+                explosion.transform.position = transform.position;
+                explosion.SetActive(true);
+            }
+
             body.velocity = new Vector3(0, 0, 0);
             gameObject.SetActive(false);
         }

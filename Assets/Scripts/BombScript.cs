@@ -38,12 +38,15 @@ public class BombScript : MonoBehaviour {
         }
 
         //Track the playerShip and move toward it
-        heading = (target.transform.position - transform.position) * movementForce;
-        heading = Vector3.ClampMagnitude(heading, movementForce);
-        body.AddForce(heading);
+        if (target.activeInHierarchy)
+        {
+            heading = (target.transform.position - transform.position) * movementForce;
+            heading = Vector3.ClampMagnitude(heading, movementForce);
+            body.AddForce(heading);
 
-        body.velocity *= movementDrag;
-        transform.forward = heading;
+            body.velocity *= movementDrag;
+            transform.forward = heading;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

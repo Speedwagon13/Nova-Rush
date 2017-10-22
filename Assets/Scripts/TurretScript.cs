@@ -6,12 +6,14 @@ public class TurretScript : MonoBehaviour {
 
     [Header("Bullet and Target Prefabs")]
     public GameObject projectile;
+    public float aggroRange;
 
     private GameObject target;
 
     private float fireRate;
     private float damageRate;
     private int hitPoints;
+    private bool aggrod;
 
     private Vector3 heading;
     private float lastShot;
@@ -44,12 +46,24 @@ public class TurretScript : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        //Turn towards the player
-        heading = (target.transform.position - transform.position);
-        transform.forward = heading;
+        if (aggrod)
+        {
+            //Turn towards the player
+            if (target.activeInHierarchy)
+            {
+                heading = (target.transform.position - transform.position);
+                transform.forward = heading;
 
-        //Fires a bomb
-        fire();
+                //Fires a bomb
+                fire();
+            }
+        } else
+        {
+            if (Vector3.Magnitude(target.transform.position - transform.position) <= aggroRange)
+            {
+                aggrod = true;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)

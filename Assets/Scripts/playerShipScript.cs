@@ -10,6 +10,7 @@ public class playerShipScript : MonoBehaviour
     public float abilityCooldown;
     public float dashLength;
     public float dashSpeed;
+    public GameObject explosion;
     public GameObject gameOverScreen;
     public GameObject pauseScreen;
     public GameObject winScreen;
@@ -35,7 +36,7 @@ public class playerShipScript : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody>();
-        hitPoints = 3;
+        hitPoints = 300;
         lastShot = Time.time;
         lastDamage = Time.time;
         lastAbility = Time.time;
@@ -203,6 +204,7 @@ public class playerShipScript : MonoBehaviour
 
     private void die()
     {
+        GameObject.Instantiate(explosion, transform.position, Quaternion.identity);
         gameOverScreen.SetActive(true);
         gameObject.SetActive(false);
     }
