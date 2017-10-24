@@ -34,29 +34,30 @@ public class ShieldShipScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // Triggers the enemy when the player is in range
-        if (player != null)
+        if (GlobalState.current.isMissionActive())
         {
-            if (!hasSeenPlayer && Vector3.Magnitude(player.transform.position - transform.position) < aggroRange)
+            // Triggers the enemy when the player is in range
+            if (player != null)
             {
-                hasSeenPlayer = true;
-            }
-        }
-
-        if (hitPoints <= 0)
-        {
-            Destroy(gameObject);
-        }
-
-        if (player != null && hasSeenPlayer)
-        {
-            if (player.activeInHierarchy)
-            {
-                fire();
+                if (!hasSeenPlayer && Vector3.Magnitude(player.transform.position - transform.position) < aggroRange)
+                {
+                    hasSeenPlayer = true;
+                }
             }
 
-        }
+            if (hitPoints <= 0)
+            {
+                Destroy(gameObject);
+            }
+
+            if (player != null && hasSeenPlayer)
+            {
+                if (player.activeInHierarchy)
+                {
+                    fire();
+                }
+            }
+        }     
     }
 
     private void OnTriggerEnter(Collider other)

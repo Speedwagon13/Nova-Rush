@@ -40,30 +40,34 @@ public class TurretScript : MonoBehaviour {
 
     void FixedUpdate()
     {
-        //If hit points are less than 0, kill the turret
-        if (hitPoints <= 0)
+        if (!GlobalState.current.isMissionStarting() && !GlobalState.current.isMissionEnding())
         {
-            Destroy(gameObject);
-        }
-
-        if (aggrod)
-        {
-            //Turn towards the player
-            if (target.activeInHierarchy)
+            //If hit points are less than 0, kill the turret
+            if (hitPoints <= 0)
             {
-                heading = (target.transform.position - transform.position);
-                transform.forward = heading;
+                Destroy(gameObject);
+            }
 
-                //Fires a bomb
-                fire();
-            }
-        } else
-        {
-            if (Vector3.Magnitude(target.transform.position - transform.position) <= aggroRange)
+            if (aggrod)
             {
-                aggrod = true;
+                //Turn towards the player
+                if (target.activeInHierarchy)
+                {
+                    heading = (target.transform.position - transform.position);
+                    transform.forward = heading;
+
+                    //Fires a bomb
+                    fire();
+                }
             }
-        }
+            else
+            {
+                if (Vector3.Magnitude(target.transform.position - transform.position) <= aggroRange)
+                {
+                    aggrod = true;
+                }
+            }
+        } 
     }
 
     private void OnTriggerEnter(Collider other)

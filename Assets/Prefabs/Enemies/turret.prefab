@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 1776174522749276, guid: 4f3f7e7972a30c4428b607ba286b6f98, type: 2}
-  target: {fileID: 0}
+  aggroRange: 10
 --- !u!136 &136981236680456460
 CapsuleCollider:
   m_ObjectHideFlags: 1

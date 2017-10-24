@@ -32,20 +32,27 @@ public class BombScript : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (Time.time > spawnTime + bombTime)
-        {
-            explode();
-        }
 
-        //Track the playerShip and move toward it
-        if (target.activeInHierarchy)
+        if (GlobalState.current.isMissionActive())
         {
-            heading = (target.transform.position - transform.position) * movementForce;
-            heading = Vector3.ClampMagnitude(heading, movementForce);
-            body.AddForce(heading);
+            if (Time.time > spawnTime + bombTime)
+            {
+                explode();
+            }
 
-            body.velocity *= movementDrag;
-            transform.forward = heading;
+            //Track the playerShip and move toward it
+            if (target.activeInHierarchy)
+            {
+                heading = (target.transform.position - transform.position) * movementForce;
+                heading = Vector3.ClampMagnitude(heading, movementForce);
+                body.AddForce(heading);
+
+                body.velocity *= movementDrag;
+                transform.forward = heading;
+            }
+        } else
+        {
+            //body.velocity = new Vector3(0, 0, 0);
         }
     }
 

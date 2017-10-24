@@ -45,31 +45,34 @@ public class SpreadShotShip : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		// Triggers the enemy when the player is in range
-		if (target != null)
-		{
-			if (!hasSeenPlayer && Vector3.Magnitude(target.transform.position - transform.position) < aggroRange)
-			{
-				hasSeenPlayer = true;
-			}
-		}
+        if (GlobalState.current.isMissionActive())
+        {
+            // Triggers the enemy when the player is in range
+            if (target != null)
+            {
+                if (!hasSeenPlayer && Vector3.Magnitude(target.transform.position - transform.position) < aggroRange)
+                {
+                    hasSeenPlayer = true;
+                }
+            }
 
-		if (hitPoints <= 0)
-		{
-			Destroy(gameObject);
-		}
+            if (hitPoints <= 0)
+            {
+                Destroy(gameObject);
+            }
 
-		if (target != null && hasSeenPlayer)
-		{
-			heading = (target.transform.position - transform.position) * movementForce;
-			heading = Vector3.ClampMagnitude(heading, movementForce);
+            if (target != null && hasSeenPlayer)
+            {
+                heading = (target.transform.position - transform.position) * movementForce;
+                heading = Vector3.ClampMagnitude(heading, movementForce);
 
-//			body.AddForce(heading);
-//			body.velocity *= movementDrag;
+                //			body.AddForce(heading);
+                //			body.velocity *= movementDrag;
 
-			transform.forward = heading;
-			fire();
-		} 
+                transform.forward = heading;
+                fire();
+            }
+        }
 	}
 
 	private void OnTriggerEnter(Collider other)

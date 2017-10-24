@@ -23,19 +23,18 @@ public class bullet : MonoBehaviour
 
     private void Update()
     {
-        // moves 
-        if (player != null)
+        if (GlobalState.current.isMissionActive())
         {
             if (player.activeInHierarchy)
             {
                 body.velocity = transform.forward * bulletSpeed;
-            } 
-        }
+            }
 
-        if (Time.time > spawnTime + lifeSpan)
-        {
-            gameObject.SetActive(false);
-        }
+            if (Time.time > spawnTime + lifeSpan)
+            {
+                gameObject.SetActive(false);
+            }
+        } 
     }
 
     private void OnTriggerEnter(Collider other)

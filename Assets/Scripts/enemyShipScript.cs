@@ -48,45 +48,48 @@ public class enemyShipScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Triggers the enemy when the player is in range
-        if (target != null)
+        if (GlobalState.current.isMissionActive())
         {
-            if (!hasSeenPlayer && Vector3.Magnitude(target.transform.position - transform.position) < aggroRange)
+            // Triggers the enemy when the player is in range
+            if (target != null)
             {
-                hasSeenPlayer = true;
+                if (!hasSeenPlayer && Vector3.Magnitude(target.transform.position - transform.position) < aggroRange)
+                {
+                    hasSeenPlayer = true;
+                }
+            }
+
+            if (hitPoints <= 0)
+            {
+
+                GameObject explosion = ExplosionPool.current.getExplosion();
+
+                if (explosion != null)
+                {
+                    explosion.transform.position = transform.position;
+                    explosion.SetActive(true);
+                }
+
+                Destroy(gameObject);
+            }
+
+            if (target != null && hasSeenPlayer)
+            {
+                if (target.activeInHierarchy)
+                {
+                    // make it turn more slowly
+                    heading = (target.transform.position - transform.position) * movementForce;
+                    heading = Vector3.ClampMagnitude(heading, movementForce);
+
+                    body.AddForce(heading);
+                    body.velocity *= movementDrag;
+
+                    transform.forward = Vector3.Slerp(transform.forward, heading, aimSpeed);
+                    fire();
+                }
+
             }
         }
-
-        if (hitPoints <= 0)
-        {
-
-            GameObject explosion = ExplosionPool.current.getExplosion();
-
-            if (explosion != null)
-            {
-                explosion.transform.position = transform.position;
-                explosion.SetActive(true);
-            }
-
-            Destroy(gameObject);
-        }
-
-        if (target != null && hasSeenPlayer)
-        {
-            if (target.activeInHierarchy)
-            {
-                // make it turn more slowly
-                heading = (target.transform.position - transform.position) * movementForce;
-                heading = Vector3.ClampMagnitude(heading, movementForce);
-
-                body.AddForce(heading);
-                body.velocity *= movementDrag;
-
-                transform.forward = Vector3.Slerp(transform.forward, heading, aimSpeed);
-                fire();
-            }
-            
-        } 
     }
 
     private void OnTriggerEnter(Collider other)

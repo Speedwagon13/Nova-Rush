@@ -57,6 +57,8 @@ public class playerShipScript : MonoBehaviour
     
     private void FixedUpdate()
     {
+        if (GlobalState.current.isMissionActive())
+        {
             //Booleans for any mouse movement and any keys pressed
             bool mosMoved = Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0;
             bool w = Input.GetKey("w");
@@ -149,16 +151,9 @@ public class playerShipScript : MonoBehaviour
             {
                 die();
             }
-
-        if (GameObject.FindWithTag("enemy") == null)
+        } else
         {
-            print("you won 1");
-            win();
-        }
-
-        if (Input.GetKeyDown("escape"))
-        {
-            pause();
+            body.velocity = new Vector3(0, 0, 0);
         }
     }
 
@@ -218,7 +213,7 @@ public class playerShipScript : MonoBehaviour
     private void win()
     {
         print("you won 2");
-        winScreen.SetActive(true);
-        gameObject.SetActive(false);
+        // winScreen.SetActive(true);
+        // gameObject.SetActive(false);
     }
 }
