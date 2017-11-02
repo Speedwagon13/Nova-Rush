@@ -12,13 +12,13 @@ public class cameraMovement : MonoBehaviour {
     void Update () {
         if (playerShip != null)
         {
-            if (GameObject.FindWithTag("enemy") == null)
+            if (GlobalState.current.isMissionEnding())
             {
                 rotateAboutPlayer();
             }
             else
             {
-                transform.position = playerShip.transform.position + new Vector3(0, 19, -11);
+                transform.position = Vector3.Lerp(transform.position, playerShip.transform.position + new Vector3(0, 19, -11), 1f);
             }
         }
 	}

@@ -6,6 +6,7 @@ public class enemyShipScript : MonoBehaviour
 {
     [Header("Bullet and Target Prefabs")]
     public GameObject projectile;
+    public GameObject trigger;
 
     public float aggroRange;
 

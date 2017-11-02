@@ -1813,7 +1813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165cc10d6c0a2fd41b02a4d2fc056a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introTime: 1
+  introTime: 3
   outroTime: 1
   pauseRate: 0
 --- !u!114 &114346746864076220
