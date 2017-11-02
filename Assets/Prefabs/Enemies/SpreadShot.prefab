@@ -123,4 +123,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroRange: 20
   fireRate: 10
-  spread: 45
+  spread: 0.7
