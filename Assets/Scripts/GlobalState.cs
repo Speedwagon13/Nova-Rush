@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,11 @@ public class GlobalState : MonoBehaviour {
     public float outroTime;
     public float pauseRate;
 
+    public Text introText;
+    public GameObject pauseMenu;
+    public GameObject missionFailedMenu;
+    public GameObject missionClearedMenu;
+
     public static GlobalState current;
 
     private static bool paused;
@@ -15,6 +21,7 @@ public class GlobalState : MonoBehaviour {
     private static float timeUnPaused;
     private static bool missionStarting;
     private static bool missionActive;
+    private static bool missionFailed;
     private static bool missionEnding;
 
     private float startTime;
@@ -22,6 +29,8 @@ public class GlobalState : MonoBehaviour {
     private void Awake()
     {
         current = this;
+
+        introText.text = "3";
     }
 
     // Use this for initialization
@@ -52,6 +61,12 @@ public class GlobalState : MonoBehaviour {
             missionActive = false;
         }
 
+        if (GameObject.FindWithTag("friendly") == null && missionActive == true)
+        {
+            missionFailed = true;
+            missionActive = false;
+        }
+
         if (Input.GetKeyDown("p") && !paused)
         {
             print("paused");
@@ -64,6 +79,62 @@ public class GlobalState : MonoBehaviour {
             Time.timeScale = 1.0f;
             timeUnPaused = Time.time;
             paused = false;
+        }
+
+        manageIntro();
+        managePaused();
+        manageFailed();
+        manageMissionComplete();
+    }
+
+    // menu managers
+    private void manageIntro()
+    {
+        if (Time.time < 3)
+        {
+            introText.text = ((int)(4 - Time.time)).ToString();
+        }
+        else if (Time.time < 4)
+        {
+            introText.text = "Mission Start!";
+        }
+        else
+        {
+            introText.text = "";
+        }
+    }
+
+    private void managePaused()
+    {
+        if (paused)
+        {
+            pauseMenu.SetActive(true);
+        } else
+        {
+            pauseMenu.SetActive(false);
+        }
+    }
+
+    private void manageFailed()
+    {
+        if (missionFailed)
+        {
+            missionFailedMenu.SetActive(true);
+        } else
+        {
+            missionFailedMenu.SetActive(false);
+        }
+    }
+
+    private void manageMissionComplete()
+    {
+        if (missionEnding)
+        {
+            missionClearedMenu.SetActive(true);
+        }
+        else
+        {
+            missionClearedMenu.SetActive(false);
         }
     }
 
