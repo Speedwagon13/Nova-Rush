@@ -54,6 +54,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _node_520:
+        m_Texture: {fileID: 2800000, guid: 932284963d2e6394d8190c5f5c4fa203, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _node_6636:
         m_Texture: {fileID: 2800000, guid: 48f3301fb1a2c4249acb2c57d443e75b, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -80,11 +84,12 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _dissolve: 0.2866498
+    - _dissolve: 0.41
     - _u: 0.5
     - _uu: 1
     - _v: 0.05
     - _vv: 0
+    - _waviness: 0.2866498
     m_Colors:
     - _Color: {r: 0.28654844, g: 0.5346798, b: 0.7794118, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
