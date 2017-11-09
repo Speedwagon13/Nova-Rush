@@ -1651,6 +1651,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b9c29522dec3e4db655816f9d48117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1213029282945268, guid: c7dbba2e246929a4ebb8627630bba4b2, type: 2}
-  explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
-  aggroRange: 10
+  trigger: {fileID: 0}
+  aggroRange: 20

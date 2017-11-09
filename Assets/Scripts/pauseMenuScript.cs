@@ -4,22 +4,19 @@ using UnityEngine;
 
 public class pauseMenuScript : MonoBehaviour {
 
-    public GameObject player;
-    private bool paused;
-
 	// Use this for initialization
 	void Start () {
-
-        paused = false;
-
+        gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKeyDown("escape"))
+		if (GlobalState.current.isPaused())
         {
-            player.SetActive(true);
+            gameObject.SetActive(true);
+        } else
+        {
             gameObject.SetActive(false);
         }
 	}

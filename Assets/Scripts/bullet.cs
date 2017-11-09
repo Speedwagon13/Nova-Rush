@@ -72,8 +72,12 @@ public class bullet : MonoBehaviour
                 explosion.transform.position = transform.position;
                 explosion.SetActive(true);
             }
-
-            body.velocity = new Vector3(0, 0, 0);
+            // null reference exception was being thrown here. not sure why
+            if (body.velocity != null)
+            {
+                body.velocity = new Vector3(0, 0, 0);
+            }
+            
             gameObject.SetActive(false);
 
         } else if (gameObject.tag == "damageDealerEnemy" && other.tag == "neutral")
