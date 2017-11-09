@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: snow
+  m_Name: rock_grass
   m_Shader: {fileID: 4800000, guid: 52c02e09b5944c547bcd8186ce7f0146, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -54,10 +54,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _ramp:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -78,19 +74,15 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     - _node_2615: 10
-    - _node_4956: 0.2991453
-    - _node_8149: 1.291332
+    - _node_8149: 2.220104
     m_Colors:
-    - _Color: {r: 1, g: 0.753, b: 0.316, a: 1}
+    - _Color: {r: 0.5, g: 0.4595588, b: 0.4654158, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
-    - _ShadowColor: {r: 0.41911763, g: 0.3953138, b: 0.3698097, a: 1}
-    - _diffuse: {r: 0.9558824, g: 0.856998, b: 0.5974265, a: 1}
+    - _ShadowColor: {r: 0.5647059, g: 0.43529412, b: 0.29411766, a: 1}
+    - _diffuse: {r: 1, g: 0.79918873, b: 0.27205884, a: 1}
     - _gradval: {r: 0.6, g: 0.8, b: 0.2, a: 1}
-    - _node_1637: {r: 0.17151876, g: 0.1513841, b: 0.7352941, a: 1}
-    - _node_4919: {r: 0.8823529, g: 0.1297578, b: 0.1297578, a: 1}
-    - _node_4982: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _node_1637: {r: 0.6911765, g: 0.1741961, b: 0.05590399, a: 1}
     - _node_5312: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _node_56: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _primary: {r: 0.83131486, g: 0.885133, b: 0.9117647, a: 1}
-    - _secondary: {r: 0, g: 0.42068958, b: 1, a: 1}
+    - _primary: {r: 0.5408737, g: 0.60294116, b: 0.5798263, a: 1}
+    - _secondary: {r: 0.23988971, g: 0.375, b: 0.27436614, a: 1}

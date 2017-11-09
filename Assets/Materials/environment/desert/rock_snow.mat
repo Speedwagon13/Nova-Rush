@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: rock_grey
-  m_Shader: {fileID: 4800000, guid: 29eaf419f9bd443c6a302b2fa38b568c, type: 3}
+  m_Name: rock_snow
+  m_Shader: {fileID: 4800000, guid: 52c02e09b5944c547bcd8186ce7f0146, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -60,6 +60,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EmissionScaleUI: 0
+    - _Gloss: 0
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
@@ -73,10 +74,15 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     - _node_2615: 10
+    - _node_8149: 2.220104
     m_Colors:
     - _Color: {r: 0.5, g: 0.4595588, b: 0.4654158, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowColor: {r: 0.5647059, g: 0.43529412, b: 0.29411766, a: 1}
     - _diffuse: {r: 1, g: 0.79918873, b: 0.27205884, a: 1}
+    - _gradval: {r: 0.6, g: 0.8, b: 0.2, a: 1}
+    - _node_1637: {r: 0.05590399, g: 0.34944373, b: 0.6911765, a: 1}
     - _node_5312: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _primary: {r: 0.29065743, g: 0.30130652, b: 0.30882353, a: 1}
+    - _secondary: {r: 0.23988971, g: 0.3246831, b: 0.375, a: 1}
