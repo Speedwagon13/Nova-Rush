@@ -89,7 +89,7 @@ Material:
     - _uu: 1
     - _v: 0.05
     - _vv: 0
-    - _waviness: 0.2866498
+    - _waviness: 0.278
     m_Colors:
     - _Color: {r: 0.28654844, g: 0.5346798, b: 0.7794118, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

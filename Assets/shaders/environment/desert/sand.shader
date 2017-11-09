@@ -1,13 +1,13 @@
 // Shader created with Shader Forge v1.38 
 // Shader Forge (c) Neat Corporation / Joachim Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:1.38;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:False,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,atwp:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:2865,x:32719,y:32712,varname:node_2865,prsc:2|diff-6746-OUT,spec-358-OUT,gloss-1813-OUT,amspl-7464-OUT;n:type:ShaderForge.SFN_Slider,id:358,x:32237,y:32781,ptovrint:False,ptlb:Metallic,ptin:_Metallic,varname:node_358,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Slider,id:1813,x:32250,y:32882,ptovrint:False,ptlb:Gloss,ptin:_Gloss,varname:_Metallic_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Fresnel,id:6078,x:32147,y:33084,varname:node_6078,prsc:2|EXP-8149-OUT;n:type:ShaderForge.SFN_Slider,id:8149,x:31785,y:33174,ptovrint:False,ptlb:node_8149,ptin:_node_8149,varname:node_8149,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:2.220104,max:5;n:type:ShaderForge.SFN_Multiply,id:7464,x:32371,y:33164,varname:node_7464,prsc:2|A-6078-OUT,B-1637-RGB;n:type:ShaderForge.SFN_Color,id:1637,x:32193,y:33231,ptovrint:False,ptlb:node_1637,ptin:_node_1637,varname:node_1637,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.6911765,c2:0.1741961,c3:0.05590399,c4:1;n:type:ShaderForge.SFN_Lerp,id:6746,x:32520,y:32416,varname:node_6746,prsc:2|A-4940-RGB,B-2889-RGB,T-6409-OUT;n:type:ShaderForge.SFN_NormalVector,id:2731,x:32010,y:32311,prsc:2,pt:False;n:type:ShaderForge.SFN_Dot,id:6409,x:32235,y:32431,varname:node_6409,prsc:2,dt:0|A-2731-OUT,B-3066-RGB;n:type:ShaderForge.SFN_Color,id:4940,x:32218,y:32050,ptovrint:False,ptlb:secondary,ptin:_secondary,varname:node_4940,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.9568628,c2:0.2862745,c3:0.03921569,c4:1;n:type:ShaderForge.SFN_Color,id:2889,x:32218,y:32221,ptovrint:False,ptlb:primary,ptin:_primary,varname:_secondary_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.9529412,c2:0.7568628,c3:0.3294118,c4:1;n:type:ShaderForge.SFN_Color,id:3066,x:31909,y:32597,ptovrint:False,ptlb:grad val,ptin:_gradval,varname:node_3066,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.6,c2:0.8,c3:0.2,c4:1;proporder:358-1813-8149-1637-4940-2889-3066;pass:END;sub:END;*/
+/*SF_DATA;ver:1.38;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:False,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,atwp:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:2865,x:32836,y:32816,varname:node_2865,prsc:2|diff-6746-OUT,spec-358-OUT,gloss-1813-OUT,amspl-7464-OUT;n:type:ShaderForge.SFN_Slider,id:358,x:32354,y:32885,ptovrint:False,ptlb:Metallic,ptin:_Metallic,varname:node_358,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Slider,id:1813,x:32367,y:32986,ptovrint:False,ptlb:Gloss,ptin:_Gloss,varname:_Metallic_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Fresnel,id:6078,x:32264,y:33188,varname:node_6078,prsc:2|EXP-8149-OUT;n:type:ShaderForge.SFN_Slider,id:8149,x:31902,y:33278,ptovrint:False,ptlb:node_8149,ptin:_node_8149,varname:node_8149,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:2.133093,max:5;n:type:ShaderForge.SFN_Multiply,id:7464,x:32488,y:33268,varname:node_7464,prsc:2|A-6078-OUT,B-1637-RGB;n:type:ShaderForge.SFN_Color,id:1637,x:32310,y:33335,ptovrint:False,ptlb:node_1637,ptin:_node_1637,varname:node_1637,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.6911765,c2:0.1741961,c3:0.05590399,c4:1;n:type:ShaderForge.SFN_Lerp,id:6746,x:32635,y:32571,varname:node_6746,prsc:2|A-4940-RGB,B-2889-RGB,T-6409-OUT;n:type:ShaderForge.SFN_NormalVector,id:2731,x:32127,y:32415,prsc:2,pt:False;n:type:ShaderForge.SFN_Dot,id:6409,x:32352,y:32535,varname:node_6409,prsc:2,dt:0|A-2731-OUT,B-3066-RGB;n:type:ShaderForge.SFN_Color,id:4940,x:32335,y:32154,ptovrint:False,ptlb:secondary,ptin:_secondary,varname:node_4940,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.9568628,c2:0.2862745,c3:0.03921569,c4:1;n:type:ShaderForge.SFN_Color,id:2889,x:32335,y:32325,ptovrint:False,ptlb:primary,ptin:_primary,varname:_secondary_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.9529412,c2:0.7568628,c3:0.3294118,c4:1;n:type:ShaderForge.SFN_Color,id:3066,x:32026,y:32701,ptovrint:False,ptlb:grad val,ptin:_gradval,varname:node_3066,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.6,c2:0.8,c3:0.2,c4:1;proporder:358-1813-8149-1637-4940-2889-3066;pass:END;sub:END;*/
 
 Shader "Shader Forge/sand" {
     Properties {
         _Metallic ("Metallic", Range(0, 1)) = 0
         _Gloss ("Gloss", Range(0, 1)) = 0
-        _node_8149 ("node_8149", Range(0, 5)) = 2.220104
+        _node_8149 ("node_8149", Range(0, 5)) = 2.133093
         _node_1637 ("node_1637", Color) = (0.6911765,0.1741961,0.05590399,1)
         _secondary ("secondary", Color) = (0.9568628,0.2862745,0.03921569,1)
         _primary ("primary", Color) = (0.9529412,0.7568628,0.3294118,1)
@@ -40,7 +40,7 @@ Shader "Shader Forge/sand" {
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
             #pragma multi_compile_fog
-            #pragma only_renderers d3d9 d3d11 glcore gles 
+            #pragma only_renderers d3d9 d3d11 glcore gles metal 
             #pragma target 3.0
             uniform float _Metallic;
             uniform float _Gloss;
@@ -226,7 +226,7 @@ Shader "Shader Forge/sand" {
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
             #pragma multi_compile_fog
-            #pragma only_renderers d3d9 d3d11 glcore gles 
+            #pragma only_renderers d3d9 d3d11 glcore gles metal 
             #pragma target 3.0
             uniform float _Metallic;
             uniform float _Gloss;
@@ -346,7 +346,7 @@ Shader "Shader Forge/sand" {
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
             #pragma multi_compile_fog
-            #pragma only_renderers d3d9 d3d11 glcore gles 
+            #pragma only_renderers d3d9 d3d11 glcore gles metal 
             #pragma target 3.0
             uniform float _Metallic;
             uniform float _Gloss;
