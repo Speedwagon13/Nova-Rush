@@ -28,7 +28,7 @@ public class playerShipScript : MonoBehaviour
     private float lastDamage;
     private float lastAbility;
 
-    private int hitPoints;
+    public int hitPoints;
     
     private bool usingController;
     private bool dashing;
