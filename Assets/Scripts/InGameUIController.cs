@@ -76,7 +76,7 @@ public class InGameUIController : MonoBehaviour {
 
     public void LoadScene(int index)
     {
-        StartCoroutine(LoadAsyncScene(index));
+        StartCoroutine(LoadAsyncScene(index, 0));
     }
 
     public void Pause()
@@ -102,14 +102,14 @@ public class InGameUIController : MonoBehaviour {
     {
         UIAnimator.SetBool("didWin", true);
         StopCoroutine(Blur());
-        LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(LoadAsyncScene(SceneManager.GetActiveScene().buildIndex + 1, 4));
     }
 
     public void Die()
     {
         UIAnimator.SetBool("isDead", true);
         StopCoroutine(Blur());
-        LoadScene(SceneManager.GetActiveScene().buildIndex);
+        StartCoroutine(LoadAsyncScene(SceneManager.GetActiveScene().buildIndex, 4));
     }
 
     #endregion UI Event Functions
@@ -149,9 +149,9 @@ public class InGameUIController : MonoBehaviour {
         Time.timeScale = 1;
     }
 
-    IEnumerator LoadAsyncScene(int index)
+    IEnumerator LoadAsyncScene(int index, float waitTime)
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(waitTime);
         loadLevel = SceneManager.LoadSceneAsync(index);
         while (!loadLevel.isDone)
         {
