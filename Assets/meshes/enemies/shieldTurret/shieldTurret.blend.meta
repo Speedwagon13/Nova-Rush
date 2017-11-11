@@ -1,82 +1,54 @@
 fileFormatVersion: 2
-guid: 2ccabdf8348296e4f9cb9f464e9651fc
-timeCreated: 1510250633
+guid: 7aee006fac1d241f094b61173025ad3d
+timeCreated: 1510431717
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: GameObject
-    100004: GameObject 1
-    100006: GameObject 2
-    100008: GameObject 3
-    100010: rock0
-    100012: rock0 (1)
-    100014: rock0 (2)
-    100016: rock1
-    100018: rock1 (1)
-    100020: rock1 (2)
-    100022: tower
-    100024: tower (1)
-    100026: wall
-    100028: wall (1)
-    100030: wall (2)
-    100032: wallDesert
-    400000: //RootNode
-    400002: GameObject
-    400004: GameObject 1
-    400006: GameObject 2
-    400008: GameObject 3
-    400010: rock0
-    400012: rock0 (1)
-    400014: rock0 (2)
-    400016: rock1
-    400018: rock1 (1)
-    400020: rock1 (2)
-    400022: tower
-    400024: tower (1)
-    400026: wall
-    400028: wall (1)
-    400030: wall (2)
-    400032: wallDesert
-    2300000: rock0
-    2300002: rock0 (1)
-    2300004: rock0 (2)
-    2300006: rock1
-    2300008: rock1 (1)
-    2300010: rock1 (2)
-    2300012: tower
-    2300014: tower (1)
-    2300016: wall
-    2300018: wall (1)
-    2300020: wall (2)
-    3300000: rock0
-    3300002: rock0 (1)
-    3300004: rock0 (2)
-    3300006: rock1
-    3300008: rock1 (1)
-    3300010: rock1 (2)
-    3300012: tower
-    3300014: tower (1)
-    3300016: wall
-    3300018: wall (1)
-    3300020: wall (2)
-    4300000: tower (1)
-    4300002: wall
-    4300004: wall (1)
-    4300006: wall (2)
-    4300008: tower
-    4300010: rock1 (1)
-    4300012: rock0 (1)
-    4300014: rock1 (2)
-    4300016: rock0 (2)
-    4300018: rock1
-    4300020: rock0
-  externalObjects: {}
+    100000: Cylinder
+    100002: Icosphere
+    100004: Plane
+    100006: //RootNode
+    100008: Sphere
+    100010: Sphere_001
+    400000: Cylinder
+    400002: Icosphere
+    400004: Plane
+    400006: //RootNode
+    400008: Sphere
+    400010: Sphere_001
+    2300000: Cylinder
+    2300002: Icosphere
+    2300004: Plane
+    2300006: Sphere
+    2300008: Sphere_001
+    3300000: Cylinder
+    3300002: Icosphere
+    3300004: Plane
+    3300006: Sphere
+    3300008: Sphere_001
+    4300000: Plane
+    4300002: Sphere
+    4300004: Cylinder
+    4300006: Icosphere
+    4300008: Sphere_001
+    7400000: Default Take
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_001
+    second: {fileID: 2100000, guid: 574e7c3233e354eff983aedd5d7f25a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: unnamed
+    second: {fileID: 2100000, guid: 805c0cb335f344a528458f6eed332acb, type: 2}
   materials:
-    importMaterials: 1
-    materialName: 1
-    materialSearch: 2
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
     materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
@@ -144,7 +116,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
