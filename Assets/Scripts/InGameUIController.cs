@@ -43,7 +43,7 @@ public class InGameUIController : MonoBehaviour {
     {
         if (GlobalState.current.isMissionEnding()){
             Win();
-        } else if (player.GetComponent<playerShipScript>().hitPoints <= 0)
+        } else if (GlobalState.current.isMissionFailed())
         {
             Die();
         }

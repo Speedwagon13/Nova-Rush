@@ -11,9 +11,6 @@ public class playerShipScript : MonoBehaviour
     public float dashLength;
     public float dashSpeed;
     public GameObject explosion;
-    public GameObject gameOverScreen;
-    public GameObject pauseScreen;
-    public GameObject winScreen;
 
     private Rigidbody body;
     
@@ -32,16 +29,18 @@ public class playerShipScript : MonoBehaviour
     
     private bool usingController;
     private bool dashing;
+    public bool dead;
 
     void Start()
     {
         body = GetComponent<Rigidbody>();
-        hitPoints = 300;
+        hitPoints = 1;
         lastShot = Time.time;
         lastDamage = Time.time;
         lastAbility = Time.time;
         usingController = false;
         dashing = false;
+        dead = false;
 
         //Movement Variables
         movementForce = 180;
@@ -198,21 +197,7 @@ public class playerShipScript : MonoBehaviour
 
     private void die()
     {
-        GameObject.Instantiate(explosion, transform.position, Quaternion.identity);
-        gameOverScreen.SetActive(true);
+        dead = true; 
         gameObject.SetActive(false);
-    }
-
-    private void pause()
-    {
-        pauseScreen.SetActive(true);
-        gameObject.SetActive(false);
-    }
-
-    private void win()
-    {
-        print("you won 2");
-        // winScreen.SetActive(true);
-        // gameObject.SetActive(false);
     }
 }
