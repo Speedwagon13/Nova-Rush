@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: shield
-  m_Shader: {fileID: 4800000, guid: a896be497f79fa44b9a91bf4a0d9c717, type: 3}
+  m_Shader: {fileID: 4800000, guid: 7cd77fa97edcf164d8126279a749b8fd, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -82,8 +82,8 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _Dissolve: 0.139
-    - _Dissolve_copy: 0.553
+    - _Dissolve: 0
+    - _Dissolve_copy: 0.072
     - _Dissolve_copy_copy_copy: 0.502
     - _DstBlend: 0
     - _GlossMapScale: 1
@@ -98,18 +98,18 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _node_2889_copy: 0.3
+    - _node_2889_copy: 0.07
     - _node_2889_copy_copy_copy: 0.3
-    - _node_5408_copy: -0.2
+    - _node_5408_copy: -0.04
     - _node_5408_copy_copy_copy: -0.2
     - _opacity: 2
     - _opacity_copy_copy: 2
     - _uspeed: 0.025
-    - _uspeed_copy: 0.1
+    - _uspeed_copy: 0.05
     - _uspeed_copy_copy_copy: 0.1
     - _uuspeed: 0.01
     - _vspeed: 0.01
-    - _vspeed_copy: 0.2
+    - _vspeed_copy: 0.03
     - _vspeed_copy_copy_copy: 0.2
     - _vvspeed: -0.01
     m_Colors:
