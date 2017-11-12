@@ -15,12 +15,14 @@ public class InGameUIController : MonoBehaviour {
     Animator UIAnimator;
 
     bool isPaused;
+    private bool loadedLevel;
     float dof;
     private AsyncOperation loadLevel;
 
     // Use this for initialization
     void Start()
     {
+        loadedLevel = false;
         SceneManager.sceneUnloaded += Cleanup;
         postProcessingProfile.depthOfField.enabled = true;
         //Cursor.visible = false;
@@ -100,9 +102,14 @@ public class InGameUIController : MonoBehaviour {
 
     public void Win()
     {
-        UIAnimator.SetBool("didWin", true);
-        StopCoroutine(Blur());
-        StartCoroutine(LoadAsyncScene(SceneManager.GetActiveScene().buildIndex + 1, 4));
+        if (!loadedLevel)
+        {
+            loadedLevel = true;
+            UIAnimator.SetBool("didWin", true);
+            StopCoroutine(Blur());
+            StartCoroutine(LoadAsyncScene(SceneManager.GetActiveScene().buildIndex + 1, 4));
+        }
+        
     }
 
     public void Die()

@@ -9,6 +9,7 @@ TagManager:
   - friendly
   - enemy
   - neutral
+  - music
   layers:
   - Default
   - TransparentFX
