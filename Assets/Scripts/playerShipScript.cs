@@ -10,7 +10,8 @@ public class playerShipScript : MonoBehaviour
     public float abilityCooldown;
     public float dashLength;
     public float dashSpeed;
-    public GameObject explosion;
+    public AudioClip damagedSound;
+    public AudioClip bulletFire;
 
     private Rigidbody body;
     
@@ -24,6 +25,7 @@ public class playerShipScript : MonoBehaviour
     private float lastShot;
     private float lastDamage;
     private float lastAbility;
+    private AudioSource audioSource;
 
     public int hitPoints;
     
@@ -51,6 +53,7 @@ public class playerShipScript : MonoBehaviour
         damageRate = 1.5f;
 
         gameObject.tag = "friendly";
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
     
     private void FixedUpdate()
@@ -163,6 +166,8 @@ public class playerShipScript : MonoBehaviour
             {
                 if (!dashing)
                 {
+                    audioSource.clip = damagedSound;
+                    audioSource.Play();
                     hitPoints--;
                     lastDamage = Time.time;
                 }
@@ -175,6 +180,9 @@ public class playerShipScript : MonoBehaviour
         if (Time.time > fireRate + lastShot)
         {
             GameObject bullet = PlayerBulletPooler.current.getPlayerBullet();
+
+            audioSource.clip = bulletFire;
+            audioSource.Play();
 
             if (bullet != null)
             {
@@ -197,6 +205,9 @@ public class playerShipScript : MonoBehaviour
 
     private void die()
     {
+        GameObject explosion = ExplosionPool.current.getExplosion();
+        explosion.SetActive(true);
+        explosion.transform.position = transform.position;
         dead = true; 
         gameObject.SetActive(false);
     }

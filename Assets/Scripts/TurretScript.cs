@@ -45,6 +45,9 @@ public class TurretScript : MonoBehaviour {
             //If hit points are less than 0, kill the turret
             if (hitPoints <= 0)
             {
+                GameObject explosion = ExplosionPool.current.getExplosion();
+                explosion.SetActive(true);
+                explosion.transform.position = transform.position;
                 Destroy(gameObject);
             }
 
