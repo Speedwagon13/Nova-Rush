@@ -94,6 +94,9 @@ public class enemyShipScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "friendly") {
+            hasSeenPlayer = true;
+        }
         if (Time.time > damageRate + lastDamage)
         {
             if (other.tag == "damageDealerFriendly")
