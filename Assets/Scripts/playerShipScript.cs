@@ -12,6 +12,9 @@ public class playerShipScript : MonoBehaviour
     public float dashSpeed;
     public AudioClip damagedSound;
     public AudioClip bulletFire;
+    public GameObject health1;
+    public GameObject health2;
+    public GameObject health3;
 
     private Rigidbody body;
     
@@ -36,7 +39,7 @@ public class playerShipScript : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody>();
-        hitPoints = 1;
+        hitPoints = 3;
         lastShot = Time.time;
         lastDamage = Time.time;
         lastAbility = Time.time;
@@ -168,6 +171,25 @@ public class playerShipScript : MonoBehaviour
                 {
                     audioSource.clip = damagedSound;
                     audioSource.Play();
+                    if (hitPoints == 3)
+                    {
+                        GameObject particle = PlayerExplosionPool.current.getExplosion();
+                        particle.SetActive(true);
+                        particle.transform.position = health3.transform.position;
+                        GameObject.Destroy(health3);
+                    } else if (hitPoints == 2)
+                    {
+                        GameObject particle = PlayerExplosionPool.current.getExplosion();
+                        particle.SetActive(true);
+                        particle.transform.position = health2.transform.position;
+                        GameObject.Destroy(health2);
+                    } else if (hitPoints == 1)
+                    {
+                        GameObject particle = PlayerExplosionPool.current.getExplosion();
+                        particle.SetActive(true);
+                        particle.transform.position = health1.transform.position;
+                        GameObject.Destroy(health1);
+                    }
                     hitPoints--;
                     lastDamage = Time.time;
                 }

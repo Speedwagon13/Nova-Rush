@@ -71,7 +71,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Metallic: 0.016
+    - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -82,11 +82,11 @@ Material:
     - _UVSec: 0
     - _VSpeed: 0.5
     - _ZWrite: 1
-    - _fresneleffect: 1.04
+    - _fresneleffect: 1.5
     - _node_2615: 10
     - _node_6477: 0
     - _node_8952: 5
-    - _offsetval: 4
+    - _offsetval: 1
     - _texgloss: 2
     - _textintensity: 1
     - _texval: 1
