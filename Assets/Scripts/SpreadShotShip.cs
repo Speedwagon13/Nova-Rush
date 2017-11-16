@@ -6,7 +6,9 @@ public class SpreadShotShip : MonoBehaviour
 {
 	[Header("Bullet and Target Prefabs")]
 	public float aggroRange;
+    public AudioClip bulletFireSound;
 
+    private AudioSource audioSource;
 	private float movementForce;
 	private float movementDrag;
 	private float bulletSpeed;
@@ -25,6 +27,7 @@ public class SpreadShotShip : MonoBehaviour
 
 	void Start()
 	{
+        audioSource = gameObject.GetComponent<AudioSource>();
 		body = GetComponent<Rigidbody>();
 		hasSeenPlayer = false;
 		heading = transform.forward;
@@ -58,6 +61,9 @@ public class SpreadShotShip : MonoBehaviour
 
             if (hitPoints <= 0)
             {
+                GameObject explosion = ExplosionPool.current.getExplosion();
+                explosion.SetActive(true);
+                explosion.transform.position = transform.position;
                 Destroy(gameObject);
             }
 
@@ -91,6 +97,8 @@ public class SpreadShotShip : MonoBehaviour
 	{
 		if (Time.time > fireRate + lastShot)
 		{
+            audioSource.clip = bulletFireSound;
+            audioSource.Play();
 //			GameObject bullet = EnemyBulletPooler.current.getEnemyBullet();
 			GameObject bullet2 = EnemyBulletPooler.current.getEnemyBullet();
 			bullet2.SetActive (true); //have to set first bullet to active before getting second.
