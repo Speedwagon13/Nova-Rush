@@ -1733,4 +1733,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletFireClip: {fileID: 8300000, guid: 75fd01ddf44d9b541b92913da24668c8, type: 3}
-  aggroRange: 10
+  aggroRange: 20

@@ -6,6 +6,9 @@ public class Spawner : MonoBehaviour {
 
     public GameObject enemyShip;
     private GameObject[] activeShips;
+    private float damageRate;
+    private float lastDamage;
+    private int hp;
     private int lim;
     private int radius;
     private float lastSpawnTime;
@@ -14,8 +17,11 @@ public class Spawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        hp = 8;
         lim = 10;
         radius = 20;
+        damageRate = .1f;
+        lastDamage = Time.time;
         lastSpawnTime = Time.time;
         spawnRate = 5;
         activeShips = new GameObject[lim];
@@ -31,6 +37,18 @@ public class Spawner : MonoBehaviour {
 				lastSpawnTime = Time.time;
 			}
 		}
+        if (hp <= 0)
+        {
+            GameObject explosion = ExplosionPool.current.getExplosion();
+
+            if (explosion != null)
+            {
+                explosion.transform.position = transform.position;
+                explosion.SetActive(true);
+            }
+
+            Destroy(gameObject);
+        }
 	}
 
     private void spawn()
@@ -43,6 +61,18 @@ public class Spawner : MonoBehaviour {
                 return;
             }
 
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (Time.time > damageRate + lastDamage)
+        {
+            if (other.tag == "damageDealerFriendly")
+            {
+                hp--;
+                lastDamage = Time.time;
+            }
         }
     }
 }
