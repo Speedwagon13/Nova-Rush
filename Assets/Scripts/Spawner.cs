@@ -10,6 +10,7 @@ public class Spawner : MonoBehaviour {
     private int radius;
     private float lastSpawnTime;
     private float spawnRate;
+	private GameObject target;
 
 	// Use this for initialization
 	void Start () {
@@ -18,26 +19,30 @@ public class Spawner : MonoBehaviour {
         lastSpawnTime = Time.time;
         spawnRate = 5;
         activeShips = new GameObject[lim];
+		target = GameObject.FindWithTag("friendly");
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Time.time > lastSpawnTime + spawnRate)
-        {
-            spawn();
-            lastSpawnTime = Time.time;
-        }
+		if (Vector3.Magnitude (target.transform.position - transform.position) < radius) {
+			
+			if (Time.time > lastSpawnTime + spawnRate) {
+				spawn ();
+				lastSpawnTime = Time.time;
+			}
+		}
 	}
 
     private void spawn()
     {
         for (int i = 0; i < lim; i++)
         {
-            if (activeShips[i] == null)
+			if (activeShips[i] == null)
             {
                 activeShips[i] = GameObject.Instantiate(enemyShip, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
                 return;
             }
+
         }
     }
 }

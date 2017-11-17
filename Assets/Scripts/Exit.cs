@@ -13,7 +13,9 @@ public class Exit : MonoBehaviour {
 
 	}
 
-
+	void Update () {
+		enemies = GameObject.FindGameObjectsWithTag("enemy");
+	}
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "friendly")
