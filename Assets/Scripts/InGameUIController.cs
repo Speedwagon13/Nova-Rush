@@ -51,18 +51,10 @@ public class InGameUIController : MonoBehaviour {
         }
         
 #if UNITY_STANDALONE_OSX
-            if (Input.GetButtonDown("StartMac"))
-            {
-                if (!startInUse)
-                {
-                    startInUse = true;
-                    pause();
-                }   
-            }
-            else
-            {
-                startInUse = false;
-            }
+	if (Input.GetButtonDown("StartMac"))
+	{
+			Pause();
+	}
 #endif
 #if UNITY_STANDALONE_WIN
         if (Input.GetButtonDown("StartWin"))
