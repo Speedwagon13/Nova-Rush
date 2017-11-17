@@ -69,7 +69,6 @@ public class GlobalState : MonoBehaviour {
             missionFailed = true;
             missionActive = false;
         }
-        print(playerShip);
         if (playerShip.GetComponent<playerShipScript>().dead)
         {
             missionActive = false;

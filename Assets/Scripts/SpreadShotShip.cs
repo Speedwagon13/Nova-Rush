@@ -39,7 +39,7 @@ public class SpreadShotShip : MonoBehaviour
 		bulletSpeed = 3.75f;
 		fireRate = 0.25f;
 		damageRate = 0.05f;
-		hitPoints = 4;
+		hitPoints = 8;
 
 		target = GameObject.FindWithTag("friendly");
 

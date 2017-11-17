@@ -30,7 +30,7 @@ public class TurretScript : MonoBehaviour {
 
         fireRate = 2.5f;
         damageRate = 0.05f;
-        hitPoints = 5;
+        hitPoints = 10;
 
         myBomb = Instantiate(projectile);
         myBomb.SetActive(false);
