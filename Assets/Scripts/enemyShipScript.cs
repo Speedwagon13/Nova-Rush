@@ -101,7 +101,7 @@ public class enemyShipScript : MonoBehaviour
         }
         if (Time.time > damageRate + lastDamage)
         {
-            if (other.tag == "damageDealerFriendly")
+            if (other.tag == "damageDealerFriendly" && hasSeenPlayer)
             {
                 hitPoints--;
                 lastDamage = Time.time;

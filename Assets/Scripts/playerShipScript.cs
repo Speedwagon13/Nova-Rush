@@ -147,7 +147,6 @@ public class playerShipScript : MonoBehaviour
             if (Input.GetButton("LB") || Input.GetAxis("Fire2") > 0)
             {
                 dash();
-                print("dashing");
             }
 
             //Kills you if your hitpoints fall below 0
