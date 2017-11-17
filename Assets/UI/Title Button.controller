@@ -2428,13 +2428,13 @@ AnimationClip:
         tangentMode: 0
       - serializedVersion: 2
         time: 6
-        value: {x: 1.3, y: 1.25, z: 1}
-        inSlope: {x: 0, y: 0.033149138, z: 0}
-        outSlope: {x: 0, y: 0.033149138, z: 0}
+        value: {x: 1.35, y: 1.35, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 6.016667
-        value: {x: 1.3, y: 1.3, z: 1}
+        value: {x: 1.35, y: 1.3, z: 1}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -3535,7 +3535,7 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 6
-        value: 1.3
+        value: 1.35
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -3563,9 +3563,9 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 6
-        value: 1.25
-        inSlope: 0.033149138
-        outSlope: 0.033149138
+        value: 1.35
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 6.016667
@@ -3721,13 +3721,11 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
   m_Motion: {fileID: 74282363332476210}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &1102337654954135398
 AnimatorState:
   serializedVersion: 5
@@ -3746,13 +3744,11 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
   m_Motion: {fileID: 74423403079819596}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &1102526995923606196
 AnimatorState:
   serializedVersion: 5
@@ -3771,13 +3767,11 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
   m_Motion: {fileID: 74212593622605582}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &1102588839135067946
 AnimatorState:
   serializedVersion: 5
@@ -3796,13 +3790,11 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
   m_Motion: {fileID: 74237383440043570}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1107 &1107464168437528530
 AnimatorStateMachine:
   serializedVersion: 5

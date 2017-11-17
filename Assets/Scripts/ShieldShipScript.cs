@@ -90,8 +90,8 @@ public class ShieldShipScript : MonoBehaviour
             {
                 GameObject bullet = EnemyBulletPooler.current.getEnemyBullet();
                 bullet.SetActive(true);
-                float xPos = speed * 2.5f * Mathf.Cos(Time.time / 4 + i * 2 * Mathf.PI / 3 + t);
-                float yPos = speed * 2.5f * Mathf.Sin(Time.time / 4 + i * 2 * Mathf.PI / 3 + t);
+                float xPos = speed * 2.5f * Mathf.Cos((Time.time - spawnTime) / 4 + i * 2 * Mathf.PI / 3 + t);
+                float yPos = speed * 2.5f * Mathf.Sin((Time.time - spawnTime) / 4 + i * 2 * Mathf.PI / 3 + t);
                 bullet.transform.position = transform.position + new Vector3(xPos, 0, yPos);
                 bullet.transform.forward = bullet.transform.position - transform.position;
             }
