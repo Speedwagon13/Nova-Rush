@@ -23,11 +23,11 @@ public class cameraMovement : MonoBehaviour {
         {
             if (GlobalState.current.isMissionStarting())
             {
-                float theta = Mathf.PI + (Mathf.PI / 2) * Time.time / (startTime + GlobalState.current.introTime);
+                float theta = Mathf.PI + (Mathf.PI / 2) * (Time.time - startTime) / (GlobalState.current.introTime);
                 float zComp = 10f * Mathf.Cos(theta);
                 float yComp = 10f * Mathf.Sin(theta);
                 transform.position = originalPos + new Vector3(0, yComp, zComp);
-            } else if (GlobalState.current.isMissionEnding())
+            } else if (GlobalState.current.isMissionEnding() || GlobalState.current.isMissionFailed())
             {
                 rotateAboutPlayer();
             }

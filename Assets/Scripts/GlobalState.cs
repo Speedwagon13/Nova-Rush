@@ -10,11 +10,13 @@ public class GlobalState : MonoBehaviour {
     public float pauseRate;
 
     public Text introText;
-    public GameObject pauseMenu;
-    public GameObject missionFailedMenu;
-    public GameObject missionClearedMenu;
+    //public GameObject pauseMenu;
+    //public GameObject missionFailedMenu;
+    //public GameObject missionClearedMenu;
 
     public static GlobalState current;
+
+    private GameObject playerShip;
 
     private static bool paused;
     private static float timePaused;
@@ -37,7 +39,7 @@ public class GlobalState : MonoBehaviour {
     void Start () {
 
         startTime = Time.time;
-
+        playerShip = GameObject.FindGameObjectWithTag("friendly");
         paused = false;
         timePaused = Time.time;
         timeUnPaused = Time.time;
@@ -45,6 +47,7 @@ public class GlobalState : MonoBehaviour {
         missionStarting = true;
         missionActive = false;
         missionEnding = false;
+        missionFailed = false;
 	}
 
     private void Update()
@@ -65,6 +68,12 @@ public class GlobalState : MonoBehaviour {
         {
             missionFailed = true;
             missionActive = false;
+        }
+
+        if (playerShip.GetComponent<playerShipScript>().dead)
+        {
+            missionActive = false;
+            missionFailed = true;
         }
 
         if (Input.GetKeyDown("p") && !paused)
@@ -90,11 +99,11 @@ public class GlobalState : MonoBehaviour {
     // menu managers
     private void manageIntro()
     {
-        if (Time.time < 3)
+        if ((Time.time - startTime) < 3)
         {
-            introText.text = ((int)(4 - Time.time)).ToString();
+            introText.text = ((int)(4 - (Time.time - startTime))).ToString();
         }
-        else if (Time.time < 4)
+        else if ((Time.time - startTime) < 4)
         {
             introText.text = "Mission Start!";
         }
@@ -108,10 +117,10 @@ public class GlobalState : MonoBehaviour {
     {
         if (paused)
         {
-            pauseMenu.SetActive(true);
+            //pauseMenu.SetActive(true);
         } else
         {
-            pauseMenu.SetActive(false);
+            //pauseMenu.SetActive(false);
         }
     }
 
@@ -119,10 +128,10 @@ public class GlobalState : MonoBehaviour {
     {
         if (missionFailed)
         {
-            missionFailedMenu.SetActive(true);
+            //missionFailedMenu.SetActive(true);
         } else
         {
-            missionFailedMenu.SetActive(false);
+            //missionFailedMenu.SetActive(false);
         }
     }
 
@@ -130,11 +139,11 @@ public class GlobalState : MonoBehaviour {
     {
         if (missionEnding)
         {
-            missionClearedMenu.SetActive(true);
+            //missionClearedMenu.SetActive(true);
         }
         else
         {
-            missionClearedMenu.SetActive(false);
+            //missionClearedMenu.SetActive(false);
         }
     }
 
@@ -163,6 +172,11 @@ public class GlobalState : MonoBehaviour {
     public bool isMissionActive()
     {
         return missionActive;
+    }
+
+    public bool isMissionFailed()
+    {
+        return missionFailed;
     }
 
     public bool isMissionEnding()

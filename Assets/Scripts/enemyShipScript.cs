@@ -5,10 +5,11 @@ using UnityEngine;
 public class enemyShipScript : MonoBehaviour
 {
     [Header("Bullet and Target Prefabs")]
-    public GameObject trigger;
+    public AudioClip bulletFireClip;
 
     public float aggroRange;
 
+    private AudioSource audioSource;
     private float movementForce;
     private float movementDrag;
     private float bulletSpeed;
@@ -27,6 +28,7 @@ public class enemyShipScript : MonoBehaviour
 
     void Start()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
         body = GetComponent<Rigidbody>();
         hasSeenPlayer = false;
         heading = transform.forward;
@@ -94,6 +96,9 @@ public class enemyShipScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "friendly") {
+            hasSeenPlayer = true;
+        }
         if (Time.time > damageRate + lastDamage)
         {
             if (other.tag == "damageDealerFriendly")
@@ -108,6 +113,8 @@ public class enemyShipScript : MonoBehaviour
     {
         if (Time.time > fireRate + lastShot)
         {
+            audioSource.clip = bulletFireClip;
+            audioSource.Play();
             GameObject bullet = EnemyBulletPooler.current.getEnemyBullet();
 
             if (bullet != null)

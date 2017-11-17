@@ -10,9 +10,9 @@ public class ShieldShipScript : MonoBehaviour
     public float aggroRange;
     public float speed;
     public float damageRate;
+    public AudioClip bulletFireClip;
 
-    public GameObject explosion;
-
+    private AudioSource audioSource;
     private float spawnTime;
     private bool hasSeenPlayer;
     private float lastShot;
@@ -22,6 +22,7 @@ public class ShieldShipScript : MonoBehaviour
 
     private void Start()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
         spawnTime = Time.time;
         lastShot = Time.time;
         lastDamage = Time.time;
@@ -47,6 +48,9 @@ public class ShieldShipScript : MonoBehaviour
 
             if (hitPoints <= 0)
             {
+                GameObject explosion = ExplosionPool.current.getExplosion();
+                explosion.SetActive(true);
+                explosion.transform.position = transform.position;
                 Destroy(gameObject);
             }
 
@@ -62,6 +66,9 @@ public class ShieldShipScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "friendly") {
+            hasSeenPlayer = true;
+        }
         if (Time.time > damageRate + lastDamage)
         {
             if (other.tag == "damageDealerFriendly")
@@ -76,6 +83,8 @@ public class ShieldShipScript : MonoBehaviour
     {
         if (Time.time > fireRate + lastShot)
         {
+            audioSource.clip = bulletFireClip;
+            audioSource.Play();
 
             for (int i = 0; i < 3; i++)
             {

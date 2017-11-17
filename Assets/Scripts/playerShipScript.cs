@@ -10,10 +10,11 @@ public class playerShipScript : MonoBehaviour
     public float abilityCooldown;
     public float dashLength;
     public float dashSpeed;
-    public GameObject explosion;
-    public GameObject gameOverScreen;
-    public GameObject pauseScreen;
-    public GameObject winScreen;
+    public AudioClip damagedSound;
+    public AudioClip bulletFire;
+    public GameObject health1;
+    public GameObject health2;
+    public GameObject health3;
 
     private Rigidbody body;
     
@@ -27,21 +28,24 @@ public class playerShipScript : MonoBehaviour
     private float lastShot;
     private float lastDamage;
     private float lastAbility;
+    private AudioSource audioSource;
 
-    private int hitPoints;
+    public int hitPoints;
     
     private bool usingController;
     private bool dashing;
+    public bool dead;
 
     void Start()
     {
         body = GetComponent<Rigidbody>();
-        hitPoints = 300;
+        hitPoints = 3;
         lastShot = Time.time;
         lastDamage = Time.time;
         lastAbility = Time.time;
         usingController = false;
         dashing = false;
+        dead = false;
 
         //Movement Variables
         movementForce = 180;
@@ -52,6 +56,7 @@ public class playerShipScript : MonoBehaviour
         damageRate = 1.5f;
 
         gameObject.tag = "friendly";
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
     
     private void FixedUpdate()
@@ -164,6 +169,27 @@ public class playerShipScript : MonoBehaviour
             {
                 if (!dashing)
                 {
+                    audioSource.clip = damagedSound;
+                    audioSource.Play();
+                    if (hitPoints == 3)
+                    {
+                        GameObject particle = PlayerExplosionPool.current.getExplosion();
+                        particle.SetActive(true);
+                        particle.transform.position = health3.transform.position;
+                        GameObject.Destroy(health3);
+                    } else if (hitPoints == 2)
+                    {
+                        GameObject particle = PlayerExplosionPool.current.getExplosion();
+                        particle.SetActive(true);
+                        particle.transform.position = health2.transform.position;
+                        GameObject.Destroy(health2);
+                    } else if (hitPoints == 1)
+                    {
+                        GameObject particle = PlayerExplosionPool.current.getExplosion();
+                        particle.SetActive(true);
+                        particle.transform.position = health1.transform.position;
+                        GameObject.Destroy(health1);
+                    }
                     hitPoints--;
                     lastDamage = Time.time;
                 }
@@ -176,6 +202,9 @@ public class playerShipScript : MonoBehaviour
         if (Time.time > fireRate + lastShot)
         {
             GameObject bullet = PlayerBulletPooler.current.getPlayerBullet();
+
+            audioSource.clip = bulletFire;
+            audioSource.Play();
 
             if (bullet != null)
             {
@@ -198,21 +227,10 @@ public class playerShipScript : MonoBehaviour
 
     private void die()
     {
-        GameObject.Instantiate(explosion, transform.position, Quaternion.identity);
-        gameOverScreen.SetActive(true);
+        GameObject explosion = ExplosionPool.current.getExplosion();
+        explosion.SetActive(true);
+        explosion.transform.position = transform.position;
+        dead = true; 
         gameObject.SetActive(false);
-    }
-
-    private void pause()
-    {
-        pauseScreen.SetActive(true);
-        gameObject.SetActive(false);
-    }
-
-    private void win()
-    {
-        print("you won 2");
-        // winScreen.SetActive(true);
-        // gameObject.SetActive(false);
     }
 }
