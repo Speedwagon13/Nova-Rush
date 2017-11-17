@@ -13,6 +13,8 @@ public class rotate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Rotate (new Vector3 (0, speed * Time.fixedDeltaTime,0));
+        float xPos = 2.5f * Mathf.Cos(Time.time / 4 + (Mathf.PI / 3));
+        float yPos = 2.5f * Mathf.Sin(Time.time / 4 + (Mathf.PI / 3));
+        transform.forward =  (new Vector3 (xPos, 0, yPos));
 	}
 }

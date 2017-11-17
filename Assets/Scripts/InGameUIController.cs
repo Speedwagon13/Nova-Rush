@@ -75,21 +75,24 @@ public class InGameUIController : MonoBehaviour {
 
     public void Pause()
     {
-        if (isPaused)
+        if (GlobalState.current.isMissionActive())
         {
-            UIAnimator.SetBool("isPaused", false);
-            StopCoroutine(Blur());
-            StartCoroutine(UnBlur());
-        }
-        else
-        {
-            Time.timeScale = 0;
-            UIAnimator.SetBool("isPaused", true);
-            StopCoroutine(UnBlur());
-            StartCoroutine(Blur());
-        }
+            if (isPaused)
+            {
+                UIAnimator.SetBool("isPaused", false);
+                StopCoroutine(Blur());
+                StartCoroutine(UnBlur());
+            }
+            else
+            {
+                Time.timeScale = 0;
+                UIAnimator.SetBool("isPaused", true);
+                StopCoroutine(UnBlur());
+                StartCoroutine(Blur());
+            }
 
-        isPaused = !isPaused;
+            isPaused = !isPaused;
+        }
     }
 
     public void Win()
@@ -106,9 +109,13 @@ public class InGameUIController : MonoBehaviour {
 
     public void Die()
     {
-        UIAnimator.SetBool("isDead", true);
-        StopCoroutine(Blur());
-        StartCoroutine(LoadAsyncScene(SceneManager.GetActiveScene().buildIndex, 4));
+        if (!loadedLevel)
+        {
+            loadedLevel = true;
+            UIAnimator.SetBool("isDead", true);
+            StopCoroutine(Blur());
+            StartCoroutine(LoadAsyncScene(SceneManager.GetActiveScene().buildIndex, 4));
+        }
     }
 
     #endregion UI Event Functions

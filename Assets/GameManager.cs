@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
 
     public AudioClip track;
     public GameObject musicPrefab;
+    public float volume;
 
     private GameObject music;
 
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour {
             DontDestroyOnLoad(music); 
         }
         AudioSource musicSource = music.GetComponent<AudioSource>();
+        musicSource.volume = volume;
         if (track != musicSource.clip)
         {
             musicSource.Stop();
@@ -26,5 +28,14 @@ public class GameManager : MonoBehaviour {
             musicSource.Play();
         }
             
+    }
+
+    private void Update()
+    {
+        AudioSource musicSource = music.GetComponent<AudioSource>();
+        if (!musicSource.isPlaying)
+        {
+            musicSource.Play();
+        }
     }
 }

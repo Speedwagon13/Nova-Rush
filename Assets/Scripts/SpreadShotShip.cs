@@ -87,6 +87,7 @@ public class SpreadShotShip : MonoBehaviour
 		{
 			if (other.tag == "damageDealerFriendly")
 			{
+                hasSeenPlayer = true;
 				hitPoints--;
 				lastDamage = Time.time;
 			}

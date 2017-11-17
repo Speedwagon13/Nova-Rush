@@ -80,6 +80,7 @@ public class TurretScript : MonoBehaviour {
         {
             if (other.tag == "damageDealerFriendly")
             {
+                aggrod = true;
                 hitPoints--;
                 lastDamage = Time.time;
             }

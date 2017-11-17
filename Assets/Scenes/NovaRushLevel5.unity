@@ -15581,6 +15581,11 @@ Prefab:
       propertyPath: m_Center.z
       value: -22
       objectReference: {fileID: 0}
+    - target: {fileID: 114921679190040568, guid: 6f331a8d818757d44ad26400e8b23c53,
+        type: 2}
+      propertyPath: aggroRange
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6f331a8d818757d44ad26400e8b23c53, type: 2}
   m_IsPrefabParent: 0

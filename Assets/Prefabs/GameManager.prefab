@@ -54,3 +54,4 @@ MonoBehaviour:
   track: {fileID: 8300000, guid: 61128feccab0cf14abcc370ead5d36a5, type: 3}
   musicPrefab: {fileID: 1627380941626116, guid: 98c599ce3b3133843a5c6e46906de22d,
     type: 2}
+  volume: 0.25
