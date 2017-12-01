@@ -15,9 +15,12 @@ public class playerShipScript : MonoBehaviour
     public GameObject health1;
     public GameObject health2;
     public GameObject health3;
+    public ParticleSystem particle1;
+    public GameObject model;
 
     private Rigidbody body;
-    
+    private MeshRenderer mesh;
+
     private float movementForce;
     private float movementDrag;
     private float aimSpeed;
@@ -38,6 +41,7 @@ public class playerShipScript : MonoBehaviour
 
     void Start()
     {
+        mesh = model.GetComponent<MeshRenderer>();
         body = GetComponent<Rigidbody>();
         hitPoints = 3;
         lastShot = Time.time;
@@ -53,7 +57,7 @@ public class playerShipScript : MonoBehaviour
         aimSpeed = .5f;
         aimDeadzone = .1f;
         fireRate = .125f;
-        damageRate = 1.5f;
+        damageRate = 3f;
 
         gameObject.tag = "friendly";
         audioSource = gameObject.GetComponent<AudioSource>();
@@ -138,8 +142,12 @@ public class playerShipScript : MonoBehaviour
                 transform.forward = smoothOptionalHeading;                                                  //This way the ship isnt perpetually strafing
             }
 
+            float mag;
+
+            mag = Mathf.Sqrt(Mathf.Pow(Input.GetAxis("RightJoystickX"), 2) + Mathf.Pow(Input.GetAxis("RightJoystickZ"), 2));
+
             //Fires a bullet if you press fire
-            if (Input.GetButton("RB") || Input.GetAxis("Fire1") > 0)
+            if (Input.GetButton("RB") || Input.GetAxis("Fire1") > 0 || mag > .3f)
             {
                 fire();
             }
@@ -154,9 +162,29 @@ public class playerShipScript : MonoBehaviour
             {
                 die();
             }
+
+            if (Time.time < damageRate + lastDamage)
+            {
+                flicker();
+            } else
+            {
+                mesh.enabled = true;
+            }
+
         } else
         {
             body.velocity = new Vector3(0, 0, 0);
+        }
+    }
+
+    private void flicker()
+    {
+        if (mesh.enabled)
+        {
+            mesh.enabled = false;
+        } else
+        {
+            mesh.enabled = true;
         }
     }
 
@@ -201,6 +229,8 @@ public class playerShipScript : MonoBehaviour
         if (Time.time > fireRate + lastShot)
         {
             GameObject bullet = PlayerBulletPooler.current.getPlayerBullet();
+
+            particle1.Play();
 
             audioSource.clip = bulletFire;
             audioSource.Play();
