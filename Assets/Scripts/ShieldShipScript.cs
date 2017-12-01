@@ -12,6 +12,10 @@ public class ShieldShipScript : MonoBehaviour
     public float damageRate;
     public AudioClip bulletFireClip;
 
+    public Transform tar1;
+    public Transform tar2;
+    public Transform tar3;
+
     private AudioSource audioSource;
     private float spawnTime;
     private bool hasSeenPlayer;
@@ -53,15 +57,18 @@ public class ShieldShipScript : MonoBehaviour
                 explosion.transform.position = transform.position;
                 Destroy(gameObject);
             }
-
-            if (player != null && hasSeenPlayer)
-            {
-                if (player.activeInHierarchy)
-                {
-                    fire();
-                }
-            }
         }     
+    }
+
+    private void FixedUpdate()
+    {
+        if (player != null && hasSeenPlayer)
+        {
+            if (player.activeInHierarchy)
+            {
+                fire();
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -90,9 +97,16 @@ public class ShieldShipScript : MonoBehaviour
             {
                 GameObject bullet = EnemyBulletPooler.current.getEnemyBullet();
                 bullet.SetActive(true);
-                float xPos = speed * 2.5f * Mathf.Cos((Time.time - spawnTime) / 4 + i * 2 * Mathf.PI / 3 + t);
-                float yPos = speed * 2.5f * Mathf.Sin((Time.time - spawnTime) / 4 + i * 2 * Mathf.PI / 3 + t);
-                bullet.transform.position = transform.position + new Vector3(xPos, 0, yPos);
+                if (i == 0)
+                {
+                    bullet.transform.position = tar1.position;
+                } else if (i == 1)
+                {
+                    bullet.transform.position = tar2.position;
+                } else
+                {
+                    bullet.transform.position = tar3.position;
+                }
                 bullet.transform.forward = bullet.transform.position - transform.position;
             }
             
